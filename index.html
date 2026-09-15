@@ -253,13 +253,105 @@ section{padding-block:76px; border-bottom:1px solid var(--rule)}
 .flux .cap b{color:var(--amber-ink); font-weight:500}
 
 /* ---------- cards ---------- */
-.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(288px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(378px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
 .card{background:var(--paper); padding:26px 24px; transition:background .3s ease}
 .card:hover{background:var(--surface)}
 .card .yr{font-family:var(--f-mono); font-size:11px; letter-spacing:.09em; color:var(--amber); margin-bottom:10px}
 .card h3{font-size:18px; line-height:1.28; letter-spacing:-.01em; margin-bottom:8px}
 .card .inst{font-size:12.5px; color:var(--ink-3); margin-bottom:12px}
 .card p{font-size:14.5px; color:var(--ink-2); line-height:1.58}
+
+
+/* ---------- mechanism panels ---------- */
+.mech{margin:16px 0 0; background:var(--surface-2); border:1px solid var(--rule); border-radius:2px; overflow:hidden}
+.mech svg{display:block; width:100%; height:auto}
+.mech figcaption{font-family:var(--f-mono); font-size:9.5px; letter-spacing:.05em; color:var(--ink-3); padding:0 12px 10px; line-height:1.5}
+.mlab{font-family:var(--f-mono); font-size:8.5px; letter-spacing:.1em; fill:var(--ink-3); text-transform:uppercase}
+.mline{fill:none; stroke:var(--rule-strong); stroke-width:1.2}
+.mtrack{fill:none; stroke:var(--rule-strong); stroke-width:8; stroke-linecap:round}
+.mtrack-in{fill:none; stroke:var(--surface-2); stroke-width:5.5; stroke-linecap:round}
+.morgan{fill:var(--surface); stroke:var(--rule-strong); stroke-width:1.2}
+.mech *{transform-box:fill-box; transform-origin:center}
+
+/* 1 - photoperiod and stress tolerance */
+.daybar{fill:none; stroke:var(--rule-strong); stroke-width:1.2}
+.daylit{fill:var(--amber); opacity:.5; transform-origin:left; animation:photo 8s ease-in-out infinite}
+@keyframes photo{0%,42%{transform:scaleX(.33)} 58%,100%{transform:scaleX(.5)}}
+.sun{fill:var(--amber); animation:sweep 4s linear infinite}
+@keyframes sweep{from{transform:translateX(0)} to{transform:translateX(292px)}}
+.cellrow circle{fill:var(--teal); animation:cellglow 8s ease-in-out infinite}
+@keyframes cellglow{0%,42%{opacity:.3; transform:scale(.72)} 58%,100%{opacity:.95; transform:scale(1.1)}}
+.cellrow circle:nth-child(2){animation-delay:.12s}
+.cellrow circle:nth-child(3){animation-delay:.24s}
+.cellrow circle:nth-child(4){animation-delay:.36s}
+.cellrow circle:nth-child(5){animation-delay:.48s}
+.cellrow circle:nth-child(6){animation-delay:.6s}
+
+/* 2 - optogenetic control of AtSWEET11 */
+.lamp{fill:#5B8CC4; animation:lampon 6s ease-in-out infinite}
+@keyframes lampon{0%,44%{opacity:.18; transform:scale(.85)} 56%,100%{opacity:1; transform:scale(1)}}
+.beam{stroke:#5B8CC4; stroke-width:1.2; stroke-dasharray:3 4; animation:lampon 6s ease-in-out infinite}
+.gene{fill:var(--rule-strong); transform-origin:left; animation:genex 6s ease-in-out infinite}
+@keyframes genex{0%,44%{transform:scaleX(.12); opacity:.4} 56%,100%{transform:scaleX(1); opacity:1}}
+.pore{fill:var(--teal); animation:poreon 6s ease-in-out infinite}
+@keyframes poreon{0%,44%{opacity:0; transform:scaleY(.2)} 56%,100%{opacity:1; transform:scaleY(1)}}
+.pore.p2{animation-delay:.18s}
+.sg2{fill:var(--amber); offset-path:path("M 176 62 L 322 62"); animation:flow2 3s linear infinite, sgfade 6s ease-in-out infinite}
+@keyframes flow2{from{offset-distance:0%} to{offset-distance:100%}}
+@keyframes sgfade{0%,48%{opacity:0} 60%,100%{opacity:1}}
+
+/* 3 - single-cell clustering */
+.cl{animation:cluster 7s ease-in-out infinite}
+@keyframes cluster{0%,38%{transform:scale(1)} 56%,100%{transform:scale(.3)}}
+.cl circle{animation:clhue 7s ease-in-out infinite}
+@keyframes clhue{0%,38%{fill:var(--ink-3); opacity:.5} 56%,100%{opacity:1}}
+.cl.a circle{--c:var(--amber)} .cl.b circle{--c:var(--teal)} .cl.c circle{--c:#5B8CC4}
+@keyframes clhueA{0%,38%{fill:var(--ink-3)} 56%,100%{fill:var(--amber)}}
+@keyframes clhueB{0%,38%{fill:var(--ink-3)} 56%,100%{fill:var(--teal)}}
+@keyframes clhueC{0%,38%{fill:var(--ink-3)} 56%,100%{fill:#5B8CC4}}
+.cl.a circle{animation:clhueA 7s ease-in-out infinite}
+.cl.b circle{animation:clhueB 7s ease-in-out infinite}
+.cl.c circle{animation:clhueC 7s ease-in-out infinite}
+
+/* 4 - flower size across the range */
+.bloom{fill:var(--amber); opacity:.9; animation:bloomin 6s ease-in-out infinite}
+@keyframes bloomin{0%{transform:scale(0); opacity:0} 18%,72%{transform:scale(1); opacity:.9} 100%{transform:scale(1); opacity:.9}}
+.bloom:nth-of-type(2){animation-delay:.18s}
+.bloom:nth-of-type(3){animation-delay:.36s}
+.bloom:nth-of-type(4){animation-delay:.54s}
+.bloom:nth-of-type(5){animation-delay:.72s}
+.bloom:nth-of-type(6){animation-delay:.9s}
+.climate{opacity:.25}
+
+/* 5 - amino acid permeases, high and low nitrogen */
+.nseed{fill:var(--teal); offset-path:path("M 86 60 L 268 60"); animation:flow2 3.4s linear infinite}
+.nseed.x{animation:flow2 3.4s linear infinite, nfade 7s ease-in-out infinite}
+@keyframes nfade{0%,44%{opacity:1} 56%,100%{opacity:0}}
+.aapgate{fill:var(--amber); animation:gatepulse 1.7s ease-in-out infinite}
+@keyframes gatepulse{0%,100%{opacity:.4; transform:scaleY(1)} 50%{opacity:1; transform:scaleY(1.4)}}
+.aapgate.q2{animation-delay:-.85s}
+.fruit{fill:var(--amber); opacity:.3; transform-origin:bottom; animation:fruitfill 7s ease-in-out infinite}
+@keyframes fruitfill{0%,44%{transform:scaleY(.85)} 56%,100%{transform:scaleY(.4)}}
+.nstate{animation:nswap 7s ease-in-out infinite}
+@keyframes nswap{0%,44%{opacity:1} 50%,100%{opacity:0}}
+.nstate.lo{animation:nswaplo 7s ease-in-out infinite}
+@keyframes nswaplo{0%,44%{opacity:0} 56%,100%{opacity:1}}
+
+/* 6 - stress markers in Stipa caudata */
+.stressbar{fill:none; stroke:var(--rule-strong); stroke-width:1.2}
+.stressfill{fill:var(--amber); opacity:.45; transform-origin:left; animation:stressup 9s ease-in-out infinite}
+@keyframes stressup{0%,8%{transform:scaleX(.08)} 36%,44%{transform:scaleX(.52)} 72%,100%{transform:scaleX(.94)}}
+.marker{fill:var(--rule-strong); animation:mlight 9s ease-in-out infinite}
+@keyframes mlight{0%,10%{fill:var(--rule-strong); transform:scale(.8)} 100%{fill:var(--teal); transform:scale(1.15)}}
+.marker.m2{animation-delay:.5s} .marker.m3{animation-delay:1s} .marker.m4{animation-delay:1.5s}
+.blade{stroke:var(--teal); stroke-width:1.6; fill:none; animation:curl 9s ease-in-out infinite}
+@keyframes curl{0%,8%{transform:rotate(0deg)} 100%{transform:rotate(-13deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  .mech *{animation:none !important}
+  .daylit{transform:scaleX(.5)}
+  .cl{transform:scale(.3)}
+}
 
 /* ---------- expertise ---------- */
 .exp{display:grid; grid-template-columns:repeat(3,1fr); gap:34px}
@@ -556,36 +648,134 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
         <h3>Aureochrome signalling in <i>Nannochloropsis</i></h3>
         <div class="inst">Department of Plant Biology, Michigan State University</div>
         <p>Whether blue-light receptors set stress tolerance in a microalga. Wild-type and aureochrome mutants under 8&nbsp;h and 12&nbsp;h photoperiods, challenged with high light, cold and freezing; RNA-seq to map the genes under aureochrome control.</p>
+        <figure class="mech">
+          <svg viewBox="0 0 340 100" role="img" aria-label="Longer days, more aureochrome signal, more tolerance to light, cold and freezing. Schematic.">
+            <text class="mlab" x="16" y="16">photoperiod</text>
+            <rect class="daylit" x="16" y="24" width="292" height="11" rx="5.5"/>
+            <rect class="daybar" x="16" y="24" width="292" height="11" rx="5.5"/>
+            <circle class="sun" cx="16" cy="29.5" r="4"/>
+            <text class="mlab" x="16" y="94">stress tolerance</text>
+            <g class="cellrow">
+              <circle cx="58" cy="66" r="7"/><circle cx="105" cy="66" r="7"/><circle cx="152" cy="66" r="7"/>
+              <circle cx="199" cy="66" r="7"/><circle cx="246" cy="66" r="7"/><circle cx="293" cy="66" r="7"/>
+            </g>
+          </svg>
+          <figcaption>Longer days, more aureochrome signal, more tolerance to light, cold and freezing. Schematic.</figcaption>
+        </figure>
       </article>
       <article class="card">
         <div class="yr">2023 &ndash; 2024</div>
         <h3>Long-distance sugar transport and transporters</h3>
         <div class="inst">Institute for Molecular Physiology &amp; Institute of Synthetic Biology, Heinrich Heine University</div>
         <p>Master thesis. Drove AtSWEET11 in bundle sheath cells with the PULSE optogenetic system to test whether phloem loading can be re-engineered, and ran EMS mutagenesis with whole-genome and RNA sequencing to find the regulators of assimilate partitioning.</p>
+        <figure class="mech">
+          <svg viewBox="0 0 340 100" role="img" aria-label="Light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.">
+            <text class="mlab" x="16" y="16">blue light</text>
+            <circle class="lamp" cx="34" cy="34" r="8"/>
+            <path class="beam" d="M34 44 L34 56"/>
+            <text class="mlab" x="58" y="38">PULSE</text>
+            <rect class="gene" x="16" y="62" width="120" height="7" rx="3.5"/>
+            <text class="mlab" x="16" y="84">AtSWEET11 transcribed</text>
+            <path class="mline" d="M158 40 L158 86"/>
+            <rect class="pore" x="154" y="48" width="8" height="11" rx="2"/>
+            <rect class="pore p2" x="154" y="64" width="8" height="11" rx="2"/>
+            <path class="mtrack" d="M176 62 L322 62"/>
+            <path class="mtrack-in" d="M176 62 L322 62"/>
+            <circle class="sg2" r="3.4"/>
+            <circle class="sg2" r="3.4" style="animation-delay:-1s, 0s"/>
+            <circle class="sg2" r="3.4" style="animation-delay:-2s, 0s"/>
+            <text class="mlab" x="232" y="84">into the phloem</text>
+          </svg>
+          <figcaption>Light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.</figcaption>
+        </figure>
       </article>
       <article class="card">
         <div class="yr">2022 &ndash; 2023</div>
         <h3>Deep learning for single-cell analysis on HPC</h3>
         <div class="inst">GWDG, G&ouml;ttingen</div>
         <p>Deployed the DANCE benchmarking framework as a service on GWDG's Scientific Compute Cluster, so single-cell models could be reproduced and compared without each group building its own compute stack.</p>
+        <figure class="mech">
+          <svg viewBox="0 0 340 100" role="img" aria-label="Cell clustering and type identification, benchmarked on an HPC cluster. Schematic.">
+            <text class="mlab" x="16" y="16">single cells</text>
+            <text class="mlab" x="324" y="16" text-anchor="end">clusters</text>
+          <g class="cl a"><circle cx="40" cy="40" r="3.2"/><circle cx="96" cy="72" r="3.2"/><circle cx="150" cy="34" r="3.2"/><circle cx="58" cy="80" r="3.2"/><circle cx="120" cy="52" r="3.2"/><circle cx="30" cy="60" r="3.2"/><circle cx="140" cy="78" r="3.2"/></g>
+          <g class="cl b"><circle cx="180" cy="38" r="3.2"/><circle cx="240" cy="74" r="3.2"/><circle cx="196" cy="66" r="3.2"/><circle cx="262" cy="40" r="3.2"/><circle cx="214" cy="52" r="3.2"/><circle cx="168" cy="78" r="3.2"/><circle cx="250" cy="60" r="3.2"/></g>
+          <g class="cl c"><circle cx="284" cy="44" r="3.2"/><circle cx="320" cy="70" r="3.2"/><circle cx="300" cy="58" r="3.2"/><circle cx="276" cy="76" r="3.2"/><circle cx="322" cy="38" r="3.2"/><circle cx="294" cy="32" r="3.2"/><circle cx="310" cy="84" r="3.2"/></g>
+          </svg>
+          <figcaption>Cell clustering and type identification, benchmarked on an HPC cluster. Schematic.</figcaption>
+        </figure>
       </article>
       <article class="card">
         <div class="yr">2022</div>
         <h3>Selection on flower size in a selfing species</h3>
         <div class="inst">Department of Plant Biology, Swedish University of Agricultural Sciences</div>
         <p>Quantitative genetics, population genomics and niche modelling across the range of <i>Arabidopsis thaliana</i>. Flower size turned out to vary far more than a selfer should allow &mdash; published in <i>Molecular Ecology</i>.</p>
+        <figure class="mech">
+          <svg viewBox="0 0 340 100" role="img" aria-label="Flower size shrinks toward the climatic boundaries of the range. Schematic of the published pattern.">
+            <defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="var(--teal)"/><stop offset="1" stop-color="var(--amber)"/></linearGradient></defs>
+            <rect class="climate" x="16" y="78" width="308" height="5" rx="2.5" fill="url(#cg)"/>
+            <text class="mlab" x="16" y="96">range centre</text>
+            <text class="mlab" x="324" y="96" text-anchor="end">climatic edge</text>
+            <text class="mlab" x="16" y="16">flower size</text>
+            <circle class="bloom" cx="42" cy="50" r="15"/>
+            <circle class="bloom" cx="98" cy="52" r="13"/>
+            <circle class="bloom" cx="152" cy="54" r="11"/>
+            <circle class="bloom" cx="204" cy="56" r="9"/>
+            <circle class="bloom" cx="254" cy="58" r="7"/>
+            <circle class="bloom" cx="300" cy="60" r="5"/>
+          </svg>
+          <figcaption>Flower size shrinks toward the climatic boundaries of the range. Schematic of the published pattern.</figcaption>
+        </figure>
       </article>
       <article class="card">
         <div class="yr">2022</div>
         <h3>Amino acid permeases in phloem loading</h3>
         <div class="inst">Department of Plant Production, Universitat Polit&egrave;cnica de Val&egrave;ncia</div>
         <p>Which AAP genes load nitrogen into the phloem and unload it into fruit, across four tomato cultivars with contrasting nitrogen-use efficiency &mdash; groundwork for breeding varieties that yield on less fertiliser.</p>
+        <figure class="mech">
+          <svg viewBox="0 0 340 100" role="img" aria-label="Which permeases load amino acids into the phloem, and how much nitrogen reaches the fruit. Schematic.">
+            <text class="mlab" x="16" y="16">nitrogen supply</text>
+            <text class="mlab nstate" x="108" y="16">high</text>
+            <text class="mlab nstate lo" x="108" y="16">low</text>
+            <path class="morgan" d="M22 60 C22 42 34 30 54 30 C54 48 42 60 22 60 Z"/>
+            <text class="mlab" x="16" y="84">source leaf</text>
+            <path class="mtrack" d="M86 60 L268 60"/>
+            <path class="mtrack-in" d="M86 60 L268 60"/>
+            <rect class="aapgate" x="150" y="52" width="4" height="16" rx="2"/>
+            <rect class="aapgate q2" x="206" y="52" width="4" height="16" rx="2"/>
+            <text class="mlab" x="150" y="44">AAP</text>
+            <circle class="nseed" r="3.2"/>
+            <circle class="nseed" r="3.2" style="animation-delay:-1.1s"/>
+            <circle class="nseed x" r="3.2" style="animation-delay:-2.2s, 0s"/>
+            <circle class="nseed x" r="3.2" style="animation-delay:-1.7s, 0s"/>
+            <clipPath id="fclip"><circle cx="300" cy="60" r="17"/></clipPath>
+            <g clip-path="url(#fclip)"><rect class="fruit" x="283" y="43" width="34" height="34"/></g>
+            <circle class="morgan" cx="300" cy="60" r="17" fill="none"/>
+            <text class="mlab" x="286" y="92">fruit</text>
+          </svg>
+          <figcaption>Which permeases load amino acids into the phloem, and how much nitrogen reaches the fruit. Schematic.</figcaption>
+        </figure>
       </article>
       <article class="card">
         <div class="yr">2021 &ndash; 2022</div>
         <h3>Stress physiology of <i>Stipa caudata</i></h3>
         <div class="inst">Department of Agroforestry Ecosystems, UPV, with Universidad de Chile</div>
         <p>Biochemical profiling under salinity and drought &mdash; proline, MDA, phenolics, flavonoids, chlorophylls and ion balance &mdash; against soil-based drought models, to map how the species holds on.</p>
+        <figure class="mech">
+          <svg viewBox="0 0 340 100" role="img" aria-label="The biochemical panel assayed as stress rises. Markers shown, not measured values.">
+            <text class="mlab" x="16" y="16">salinity and drought</text>
+            <rect class="stressfill" x="16" y="24" width="308" height="9" rx="4.5"/>
+            <rect class="stressbar" x="16" y="24" width="308" height="9" rx="4.5"/>
+            <path class="blade" d="M40 88 C40 68 46 54 58 46"/>
+            <path class="blade" d="M52 88 C52 70 60 58 74 50"/>
+            <text class="mlab" x="16" y="98">plant</text>
+            <circle class="marker" cx="130" cy="58" r="5"/><text class="mlab" x="122" y="78">proline</text>
+            <circle class="marker m2" cx="192" cy="58" r="5"/><text class="mlab" x="184" y="78">MDA</text>
+            <circle class="marker m3" cx="250" cy="58" r="5"/><text class="mlab" x="234" y="78">phenolics</text>
+            <circle class="marker m4" cx="308" cy="58" r="5"/><text class="mlab" x="302" y="78">ions</text>
+          </svg>
+          <figcaption>The biochemical panel assayed as stress rises. Markers shown, not measured values.</figcaption>
+        </figure>
       </article>
     </div>
   </div>
