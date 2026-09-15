@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Not found</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127807;</text></svg>">
+<style>
+:root{color-scheme:light dark;--paper:#F1F2EC;--ink:#131F1A;--ink-2:#4E6057;--ink-3:#7E8F86;--rule-strong:#BFC6BA;--amber:#A2601A}
+@media (prefers-color-scheme:dark){:root{--paper:#0C1411;--ink:#E7EDE7;--ink-2:#9BADA3;--ink-3:#71837A;--rule-strong:#2C3D35;--amber:#DCA060}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--paper);color:var(--ink);display:grid;place-items:center;padding:24px;
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;line-height:1.6}
+.box{max-width:44ch;text-align:left}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex:none;animation:p 2.8s ease-in-out infinite}
+@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.72)}}
+h1{font-family:Spectral,Georgia,serif;font-weight:600;font-size:clamp(34px,7vw,52px);line-height:1.05;
+  letter-spacing:-.025em;margin:0 0 14px}
+p{margin:0 0 26px;color:var(--ink-2)}
+a.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14px;font-weight:500;
+  padding:11px 18px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  transition:transform .25s cubic-bezier(.2,.7,.3,1)}
+a.btn:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="mono"><span class="dot"></span><span>404 &middot; nothing here</span></div>
+    <h1>This page went to the sink.</h1>
+    <p>The address doesn't match anything on this site. Everything lives on one page, so the way back is short.</p>
+    <a class="btn" href="/">Back to the start &rarr;</a>
+  </div>
+</body>
+</html>

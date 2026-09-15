@@ -13,8 +13,13 @@
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Md Jonaid Hossain">
   <meta property="og:description" content="Plant molecular physiologist. Sugar transport, vacuolar SWEET transporters and carbon allocation under elevated CO2.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/MdJonaidHossain?s=600">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://mdjonaidhossain.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Md Jonaid Hossain - plant molecular physiologist, IJPB INRAE Versailles">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@DrJonaid">
+  <meta name="twitter:creator" content="@DrJonaid">
   <style>
     :root{color-scheme:light dark}
     html,body{margin:0}
@@ -69,6 +74,14 @@ p{margin:0}
 .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:24px}
 .mono{font-family:var(--f-mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3)}
 
+
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--ink); color:var(--paper); padding:10px 16px; border-radius:2px;
+  font-size:14px; text-decoration:none;
+}
+.skip:focus{left:12px; top:calc(env(safe-area-inset-top, 0px) + 12px)}
+
 /* ---------- nav ---------- */
 .nav{
   position:sticky; top:env(safe-area-inset-top, 0px); z-index:50;
@@ -96,7 +109,19 @@ p{margin:0}
   padding:6px 10px; border-radius:2px; cursor:pointer; transition:border-color .25s, color .25s;
 }
 .theme-btn:hover{color:var(--ink); border-color:var(--ink-3)}
-@media (max-width:860px){ .nav-links{display:none} }
+@media (max-width:860px){
+  .nav-in{gap:14px}
+  .nav-links{
+    display:flex; gap:18px; overflow-x:auto; margin-right:auto;
+    scrollbar-width:none; -ms-overflow-style:none;
+    -webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);
+    mask-image:linear-gradient(90deg,#000 86%,transparent);
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:12.5px; white-space:nowrap}
+  .brand{margin-right:4px}
+}
+@media (max-width:460px){ .brand{display:none} }
 
 /* ---------- entrance motion ---------- */
 @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
@@ -563,6 +588,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
 @media print{ #progress{display:none !important} }
 </style>
 
+<a class="skip" href="#top">Skip to content</a>
 <nav class="nav">
   <div id="progress"></div>
   <div class="wrap nav-in">
@@ -1103,7 +1129,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
     </div>
     <footer class="wrap" style="padding-inline:0">
       <span>&copy; 2026 Md Jonaid Hossain</span>
-      <span class="mono">Versailles &middot; France</span>
+      <span class="mono">Versailles &middot; France &middot; updated September 2026</span>
     </footer>
   </div>
 </section>
