@@ -29,7 +29,7 @@
   --ink:#131F1A; --ink-2:#4E6057; --ink-3:#7E8F86;
   --rule:#D5DAD0; --rule-strong:#BFC6BA;
   --amber:#A2601A; --amber-ink:#8C5215; --amber-wash:#F3E7D5;
-  --teal:#2C6455; --teal-wash:#E0EAE4;
+  --teal:#2C6455; --teal-wash:#E0EAE4; --red:#B83F35;
   --shadow:0 1px 2px rgba(19,31,26,.05), 0 10px 30px -18px rgba(19,31,26,.35);
   --maxw:1120px;
   --f-display:"Spectral", Georgia, "Times New Roman", serif;
@@ -42,7 +42,7 @@
     --ink:#E7EDE7; --ink-2:#9BADA3; --ink-3:#71837A;
     --rule:#1F2D27; --rule-strong:#2C3D35;
     --amber:#DCA060; --amber-ink:#E9B77F; --amber-wash:#241B10;
-    --teal:#64A992; --teal-wash:#12201B;
+    --teal:#64A992; --teal-wash:#12201B; --red:#E8796E;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.8);
   }
 }
@@ -51,7 +51,7 @@
   --ink:#E7EDE7; --ink-2:#9BADA3; --ink-3:#71837A;
   --rule:#1F2D27; --rule-strong:#2C3D35;
   --amber:#DCA060; --amber-ink:#E9B77F; --amber-wash:#241B10;
-  --teal:#64A992; --teal-wash:#12201B;
+  --teal:#64A992; --teal-wash:#12201B; --red:#E8796E;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.8);
 }
 
@@ -288,9 +288,9 @@ section{padding-block:76px; border-bottom:1px solid var(--rule)}
 .cellrow circle:nth-child(6){animation-delay:.6s}
 
 /* 2 - optogenetic control of AtSWEET11 */
-.lamp{fill:#5B8CC4; animation:lampon 6s ease-in-out infinite}
+.lamp{fill:var(--red); animation:lampon 6s ease-in-out infinite}
 @keyframes lampon{0%,44%{opacity:.18; transform:scale(.85)} 56%,100%{opacity:1; transform:scale(1)}}
-.beam{stroke:#5B8CC4; stroke-width:1.2; stroke-dasharray:3 4; animation:lampon 6s ease-in-out infinite}
+.beam{stroke:var(--red); stroke-width:1.2; stroke-dasharray:3 4; animation:lampon 6s ease-in-out infinite}
 .gene{fill:var(--rule-strong); transform-origin:left; animation:genex 6s ease-in-out infinite}
 @keyframes genex{0%,44%{transform:scaleX(.12); opacity:.4} 56%,100%{transform:scaleX(1); opacity:1}}
 .pore{fill:var(--teal); animation:poreon 6s ease-in-out infinite}
@@ -594,7 +594,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
 
         <dl class="qa reveal stagger">
           <div><dt>Question</dt><dd>Do vacuolar SWEET transporters (SWEET2, SWEET16, SWEET17) act as the buffer that prevents carbon overflow under elevated CO<sub>2</sub>, and what happens to growth and metabolism when that buffer is removed?</dd></div>
-          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with RNA-seq, GC&ndash;MS and LC&ndash;MS metabolomics, RT-qPCR and ddPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
+          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with RNA-seq, GC&ndash;MS and LC&ndash;MS metabolomics, RT-qPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
           <div><dt>Why it matters</dt><dd>Carbon allocation is the step between photosynthesis and yield. Knowing which transporters set that allocation, and where it saturates, is what makes it a breeding and engineering target rather than a description.</dd></div>
         </dl>
 
@@ -674,10 +674,10 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
         <div class="yr">2023 &ndash; 2024</div>
         <h3>Long-distance sugar transport and transporters</h3>
         <div class="inst">Institute for Molecular Physiology &amp; Institute of Synthetic Biology, Heinrich Heine University</div>
-        <p>Master thesis. Drove AtSWEET11 in bundle sheath cells with the PULSE optogenetic system to test whether phloem loading can be re-engineered, and ran EMS mutagenesis with whole-genome and RNA sequencing to find the regulators of assimilate partitioning.</p>
+        <p>Master thesis. Drove AtSWEET11 in bundle sheath cells with the red-light-switchable PULSE optogenetic system to test whether phloem loading can be re-engineered, and ran EMS mutagenesis with whole-genome and RNA sequencing to find the regulators of assimilate partitioning.</p>
         <figure class="mech">
-          <svg viewBox="0 0 340 100" role="img" aria-label="Light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.">
-            <text class="mlab" x="16" y="16">blue light</text>
+          <svg viewBox="0 0 340 100" role="img" aria-label="Red light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.">
+            <text class="mlab" x="16" y="16">red light</text>
             <circle class="lamp" cx="34" cy="34" r="8"/>
             <path class="beam" d="M34 44 L34 56"/>
             <text class="mlab" x="58" y="38">PULSE</text>
@@ -693,7 +693,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
             <circle class="sg2" r="3.4" style="animation-delay:-2s, 0s"/>
             <text class="mlab" x="232" y="84">into the phloem</text>
           </svg>
-          <figcaption>Light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.</figcaption>
+          <figcaption>Red light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.</figcaption>
         </figure>
       </article>
       <article class="card">
