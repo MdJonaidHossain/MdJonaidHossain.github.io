@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Md Jonaid Hossain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+  <meta name="description" content="Md Jonaid Hossain - plant molecular physiologist and PhD researcher at IJPB, INRAE Versailles and Universite Paris-Saclay. Sugar transport, vacuolar SWEET transporters and carbon allocation under elevated CO2.">
+  <meta name="author" content="Md Jonaid Hossain">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127807;</text></svg>">
+  <link rel="canonical" href="https://www.jonaid.info/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Md Jonaid Hossain">
+  <meta property="og:description" content="Plant molecular physiologist. Sugar transport, vacuolar SWEET transporters and carbon allocation under elevated CO2.">
+  <meta property="og:url" content="https://www.jonaid.info/">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root{color-scheme:light dark}
+    html,body{margin:0}
+    img{max-width:100%}
+    [hidden]{display:none!important}
+  </style>
+</head>
+<body>
+<style>
+:root{
+  --paper:#F1F2EC; --surface:#FBFBF7; --surface-2:#E8EAE2;
+  --ink:#131F1A; --ink-2:#4E6057; --ink-3:#7E8F86;
+  --rule:#D5DAD0; --rule-strong:#BFC6BA;
+  --amber:#A2601A; --amber-ink:#8C5215; --amber-wash:#F3E7D5;
+  --teal:#2C6455; --teal-wash:#E0EAE4;
+  --shadow:0 1px 2px rgba(19,31,26,.05), 0 10px 30px -18px rgba(19,31,26,.35);
+  --maxw:1120px;
+  --f-display:"Spectral", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1411; --surface:#111C18; --surface-2:#17241F;
+    --ink:#E7EDE7; --ink-2:#9BADA3; --ink-3:#71837A;
+    --rule:#1F2D27; --rule-strong:#2C3D35;
+    --amber:#DCA060; --amber-ink:#E9B77F; --amber-wash:#241B10;
+    --teal:#64A992; --teal-wash:#12201B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1411; --surface:#111C18; --surface-2:#17241F;
+  --ink:#E7EDE7; --ink-2:#9BADA3; --ink-3:#71837A;
+  --rule:#1F2D27; --rule-strong:#2C3D35;
+  --amber:#DCA060; --amber-ink:#E9B77F; --amber-wash:#241B10;
+  --teal:#64A992; --teal-wash:#12201B;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-size:16px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display); font-weight:600; text-wrap:balance; margin:0}
+p{margin:0}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding-inline:24px}
+.mono{font-family:var(--f-mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3)}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky; top:env(safe-area-inset-top, 0px); z-index:50;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{display:flex; align-items:center; gap:20px; height:58px}
+.brand{font-family:var(--f-display); font-size:17px; font-weight:600; letter-spacing:-.01em; text-decoration:none; margin-right:auto; white-space:nowrap}
+.brand span{color:var(--amber)}
+.nav-links{display:flex; gap:22px; align-items:center}
+.nav-links a{
+  font-size:13.5px; text-decoration:none; color:var(--ink-2); position:relative; padding-block:4px;
+  transition:color .25s ease;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1.5px; background:var(--amber);
+  transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(.2,.7,.3,1);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.theme-btn{
+  border:1px solid var(--rule-strong); background:transparent; color:var(--ink-2);
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  padding:6px 10px; border-radius:2px; cursor:pointer; transition:border-color .25s, color .25s;
+}
+.theme-btn:hover{color:var(--ink); border-color:var(--ink-3)}
+@media (max-width:860px){ .nav-links{display:none} }
+
+/* ---------- entrance motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+.rise{animation:rise .85s cubic-bezier(.16,.84,.34,1) both}
+.d1{animation-delay:.05s} .d2{animation-delay:.14s} .d3{animation-delay:.23s}
+.d4{animation-delay:.32s} .d5{animation-delay:.41s} .d6{animation-delay:.5s}
+
+html.js .reveal{opacity:.001; transform:translateY(18px)}
+html.js .reveal.in{opacity:1; transform:none; transition:opacity .8s cubic-bezier(.16,.84,.34,1), transform .8s cubic-bezier(.16,.84,.34,1)}
+
+@media (prefers-reduced-motion:reduce){
+  .rise{animation:none}
+  html.js .reveal{opacity:1 !important; transform:none !important; transition:none !important}
+  .sugar, .pulse{animation:none !important}
+  *{scroll-behavior:auto !important}
+}
+html{scroll-behavior:smooth}
+
+/* ---------- hero ---------- */
+.hero{padding-block:72px 56px; border-bottom:1px solid var(--rule)}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:56px; align-items:start}
+.eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:22px}
+.eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--amber); flex:none}
+.pulse{animation:pulse 2.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.45; transform:scale(.72)}}
+
+h1{font-size:clamp(46px, 8vw, 78px); line-height:.98; letter-spacing:-.025em; margin-bottom:6px}
+.fullname{font-family:var(--f-mono); font-size:12px; letter-spacing:.1em; color:var(--ink-3); text-transform:uppercase; margin-bottom:26px}
+.thesis{
+  font-family:var(--f-display); font-size:clamp(21px,2.6vw,27px); line-height:1.38;
+  color:var(--ink); max-width:24ch; margin-bottom:22px;
+}
+.thesis em{font-style:italic; color:var(--amber-ink)}
+.lede{color:var(--ink-2); max-width:62ch; margin-bottom:30px; font-size:16.5px}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+.btn{
+  display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+  font-size:14px; font-weight:500; padding:11px 18px; border-radius:2px;
+  border:1px solid var(--ink); background:var(--ink); color:var(--paper);
+  transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s, background .25s, border-color .25s;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--rule-strong)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn .arr{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.btn:hover .arr{transform:translateX(3px)}
+
+.portrait{
+  position:relative; aspect-ratio:1/1.12; border:1px solid var(--rule-strong); border-radius:2px;
+  background:
+    linear-gradient(160deg, var(--surface-2), var(--surface));
+  display:grid; place-items:center; overflow:hidden;
+}
+.portrait img{width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block}
+.portrait .mark{font-family:var(--f-display); font-size:58px; letter-spacing:-.03em; color:var(--ink); opacity:.16}
+.portrait figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:8px 10px;
+  background:color-mix(in srgb, var(--surface) 86%, transparent);
+  border-top:1px solid var(--rule);
+}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr; gap:34px}
+  .portrait{max-width:220px}
+  .hero{padding-block:44px 40px}
+}
+
+/* ---------- metrics ---------- */
+.metrics{border-bottom:1px solid var(--rule); background:var(--surface)}
+.metrics-grid{display:grid; grid-template-columns:repeat(4,1fr)}
+.metric{padding:26px 24px 24px; border-left:1px solid var(--rule)}
+.metric:first-child{border-left:0; padding-left:0}
+.metric .num{font-family:var(--f-display); font-size:38px; line-height:1; letter-spacing:-.02em; color:var(--amber); font-variant-numeric:tabular-nums}
+.metric .lab{margin-top:8px; font-size:13.5px; color:var(--ink-2); line-height:1.4}
+@media (max-width:760px){
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .metric{padding:20px 16px; border-top:1px solid var(--rule)}
+  .metric:first-child{padding-left:16px}
+  .metric:nth-child(odd){border-left:0}
+}
+
+/* ---------- sections ---------- */
+section{padding-block:76px; border-bottom:1px solid var(--rule)}
+.sec-head{display:grid; grid-template-columns:150px minmax(0,1fr); gap:32px; margin-bottom:44px; align-items:start}
+.sec-head h2{font-size:clamp(28px,3.6vw,38px); letter-spacing:-.02em; line-height:1.12}
+.sec-head .intro{color:var(--ink-2); max-width:56ch; margin-top:12px}
+.rail{padding-top:9px}
+@media (max-width:760px){
+  .sec-head{grid-template-columns:1fr; gap:12px; margin-bottom:32px}
+  section{padding-block:52px}
+}
+
+/* ---------- now / featured ---------- */
+.now{
+  display:grid; grid-template-columns:150px minmax(0,1fr); gap:32px;
+}
+.now-body{border-left:2px solid var(--amber); padding-left:26px}
+.now h3{font-size:25px; letter-spacing:-.015em; line-height:1.2; margin-bottom:6px}
+.now .where{font-family:var(--f-mono); font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); margin-bottom:18px}
+.qa{display:grid; gap:18px; margin-top:22px}
+.qa div{display:grid; grid-template-columns:96px minmax(0,1fr); gap:18px; align-items:start}
+.qa dt{font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--amber); padding-top:4px}
+.qa dd{margin:0; color:var(--ink-2); max-width:60ch}
+@media (max-width:760px){
+  .now{grid-template-columns:1fr; gap:14px}
+  .now-body{padding-left:18px}
+  .qa div{grid-template-columns:1fr; gap:4px}
+}
+
+/* ---------- flux diagram ---------- */
+.flux{margin-top:34px; padding:22px 18px 14px; background:var(--surface); border:1px solid var(--rule); border-radius:2px}
+.flux svg{display:block; width:100%; height:auto}
+.flux .cap{margin-top:10px; color:var(--ink-3); font-size:12.5px; font-family:var(--f-mono); letter-spacing:.04em}
+.chan{fill:none; stroke:var(--rule-strong); stroke-width:13; stroke-linecap:round}
+.chan-in{fill:none; stroke:var(--surface-2); stroke-width:9; stroke-linecap:round}
+.vac{fill:var(--teal-wash); stroke:var(--teal); stroke-width:1.4}
+.organ{fill:var(--surface-2); stroke:var(--rule-strong); stroke-width:1.4}
+.slab{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.09em; fill:var(--ink-3); text-transform:uppercase}
+.sugar{fill:var(--amber); animation:flow 5.2s linear infinite}
+.sugar.b{fill:var(--teal); animation-duration:6.4s}
+@keyframes flow{from{offset-distance:0%} to{offset-distance:100%}}
+.p-main{offset-path:path("M 96 112 L 476 112")}
+.p-vac{offset-path:path("M 236 112 C 250 112 252 78 268 78 L 340 78 C 356 78 358 112 372 112")}
+
+/* ---------- cards ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(288px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.card{background:var(--paper); padding:26px 24px; transition:background .3s ease}
+.card:hover{background:var(--surface)}
+.card .yr{font-family:var(--f-mono); font-size:11px; letter-spacing:.09em; color:var(--amber); margin-bottom:10px}
+.card h3{font-size:18px; line-height:1.28; letter-spacing:-.01em; margin-bottom:8px}
+.card .inst{font-size:12.5px; color:var(--ink-3); margin-bottom:12px}
+.card p{font-size:14.5px; color:var(--ink-2); line-height:1.58}
+
+/* ---------- expertise ---------- */
+.exp{display:grid; grid-template-columns:repeat(3,1fr); gap:34px}
+.exp-col h3{font-size:16px; letter-spacing:-.005em; margin-bottom:6px}
+.exp-col .sub{font-size:13px; color:var(--ink-3); margin-bottom:16px; line-height:1.45}
+.chips{display:flex; flex-wrap:wrap; gap:7px}
+.chip{
+  font-size:12.5px; padding:5px 10px; border:1px solid var(--rule-strong); border-radius:2px;
+  color:var(--ink-2); background:var(--surface); transition:border-color .25s, color .25s, transform .25s;
+}
+.chip:hover{border-color:var(--amber); color:var(--amber-ink); transform:translateY(-1px)}
+@media (max-width:860px){ .exp{grid-template-columns:1fr; gap:28px} }
+
+/* ---------- publications ---------- */
+.pubs{display:grid; gap:0}
+.pub{display:grid; grid-template-columns:64px minmax(0,1fr); gap:24px; padding:22px 0; border-top:1px solid var(--rule)}
+.pub:first-child{border-top:0; padding-top:0}
+.pub .n{font-family:var(--f-mono); font-size:12px; color:var(--ink-3); padding-top:5px; font-variant-numeric:tabular-nums}
+.pub h3{font-size:17.5px; line-height:1.35; letter-spacing:-.005em; margin-bottom:7px}
+.pub .authors{font-size:14px; color:var(--ink-2); margin-bottom:6px}
+.pub .authors b{font-weight:600; color:var(--ink)}
+.pub .venue{font-size:13.5px; color:var(--ink-3)}
+.pub .venue i{font-style:italic; color:var(--ink-2)}
+.pub a.doi{
+  font-family:var(--f-mono); font-size:11.5px; letter-spacing:.05em; color:var(--amber);
+  text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s;
+}
+.pub a.doi:hover{border-bottom-color:var(--amber)}
+@media (max-width:620px){ .pub{grid-template-columns:1fr; gap:6px} .pub .n{padding-top:0} }
+
+/* ---------- lists ---------- */
+.two{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px}
+@media (max-width:860px){ .two{grid-template-columns:1fr; gap:34px} }
+.rows{display:grid}
+.row{display:grid; grid-template-columns:82px minmax(0,1fr); gap:20px; padding:14px 0; border-top:1px solid var(--rule); align-items:baseline}
+.row:first-of-type{border-top:0}
+.row .yr{font-family:var(--f-mono); font-size:12px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.row .t{font-size:14.8px; line-height:1.5}
+.row .t small{display:block; color:var(--ink-3); font-size:13px; margin-top:2px}
+.row.hl .t strong{color:var(--amber-ink)}
+h3.block{font-size:15px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--rule-strong)}
+
+/* ---------- timeline ---------- */
+.tl{display:grid; grid-template-columns:132px minmax(0,1fr); gap:0}
+.tl-yr{font-family:var(--f-mono); font-size:12px; color:var(--ink-3); padding:18px 0; border-top:1px solid var(--rule); font-variant-numeric:tabular-nums}
+.tl-it{padding:18px 0 18px 26px; border-top:1px solid var(--rule); border-left:1px solid var(--rule); position:relative}
+.tl-it::before{content:""; position:absolute; left:-4.5px; top:24px; width:8px; height:8px; border-radius:50%; background:var(--paper); border:1.5px solid var(--rule-strong)}
+.tl-it.mark::before{background:var(--amber); border-color:var(--amber)}
+.tl-it h4{font-size:15.5px; font-family:var(--f-body); font-weight:600; margin-bottom:2px}
+.tl-it .org{font-size:13.5px; color:var(--ink-2)}
+.tl-it .proj{font-size:13px; color:var(--ink-3); margin-top:3px}
+@media (max-width:620px){
+  .tl{grid-template-columns:1fr}
+  .tl-yr{padding:16px 0 0; border-top:1px solid var(--rule)}
+  .tl-it{border-top:0; border-left:0; padding:4px 0 16px}
+  .tl-it::before{display:none}
+}
+
+/* ---------- contact ---------- */
+.contact{border-bottom:0}
+.contact-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px}
+.avail{
+  border:1px solid var(--amber); background:var(--amber-wash); padding:20px 22px; border-radius:2px; margin-bottom:28px;
+}
+.avail .mono{color:var(--amber-ink); margin-bottom:6px}
+.avail p{font-size:15px; color:var(--ink)}
+.clist{display:grid; gap:2px}
+.crow{display:grid; grid-template-columns:104px minmax(0,1fr); gap:16px; padding:11px 0; border-top:1px solid var(--rule); align-items:baseline}
+.crow a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule-strong); transition:border-color .25s}
+.crow a:hover{border-bottom-color:var(--amber)}
+.refs{display:grid; gap:14px; margin-top:6px}
+.ref{padding:14px 16px; border:1px solid var(--rule); background:var(--surface); border-radius:2px}
+.ref b{font-size:14.5px}
+.ref span{display:block; font-size:13px; color:var(--ink-3); margin-top:2px}
+@media (max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:36px} }
+
+footer{padding-block:30px 40px; color:var(--ink-3); font-size:13px; display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between}
+::selection{background:var(--amber); color:var(--paper)}
+a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px}
+</style>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">Jonaid<span>.</span></a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#publications">Publications</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#path">Path</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme-btn" id="themeToggle" aria-label="Switch colour theme">Theme</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow rise d1">
+        <span class="dot pulse"></span>
+        <span class="mono">PhD researcher &middot; IJPB, INRAE Versailles &middot; Universit&eacute; Paris-Saclay</span>
+      </div>
+      <h1 class="rise d2">Jonaid</h1>
+      <div class="fullname rise d2">Md Jonaid Hossain &middot; publishes as Hossain, M.&nbsp;J.</div>
+      <p class="thesis rise d3">I work out how plants move, store and spend sugar &mdash; and <em>what that costs them</em> as CO<sub>2</sub> rises.</p>
+      <p class="lede rise d4">Plant molecular physiologist working at the join between wet lab and dry lab. I combine CRISPR genome editing, LC&ndash;MS/GC&ndash;MS metabolomics and gas-exchange physiology with structural modelling and HPC-scale omics &mdash; a method set built across seven research institutes in six countries, from Sher-e-Bangla to G&ouml;ttingen, Val&egrave;ncia, Uppsala, D&uuml;sseldorf, Michigan and now Versailles.</p>
+      <div class="cta-row rise d5">
+        <a class="btn" href="mailto:md-jonaid.hossain@inrae.fr">Get in touch <span class="arr">&rarr;</span></a>
+        <a class="btn ghost" href="#cv-download">Download CV (PDF)</a>
+        <a class="btn ghost" href="#research">Read the research</a>
+      </div>
+    </div>
+    <figure class="portrait rise d3" style="margin:0">
+      <img src="https://avatars.githubusercontent.com/MdJonaidHossain?s=600" alt="Md Jonaid Hossain" width="600" height="600">
+    </figure>
+  </div>
+</header>
+
+<div class="metrics">
+  <div class="wrap metrics-grid">
+    <div class="metric"><div class="num">5</div><div class="lab">peer-reviewed publications, incl. <i>Molecular Ecology</i> and <i>JXB</i></div></div>
+    <div class="metric"><div class="num">7</div><div class="lab">research institutes across six countries</div></div>
+    <div class="metric"><div class="num">10</div><div class="lab">competitive fellowships and scholarships awarded</div></div>
+    <div class="metric"><div class="num">1st</div><div class="lab">prize, poster &amp; flash talk &mdash; INRAE BAP PhD &amp; Postdoc Days 2026</div></div>
+  </div>
+</div>
+
+<section id="research">
+  <div class="wrap">
+    <div class="now reveal">
+      <div class="rail"><span class="mono">Current work</span></div>
+      <div class="now-body">
+        <h3>Sugar transport, transporters and CO<sub>2</sub> acclimation in plants</h3>
+        <div class="where">2025 &ndash; present &middot; Institut Jean-Pierre Bourgin (IJPB), INRAE &middot; with Dr Rozenn Le Hir</div>
+        <p class="lede" style="margin-bottom:0">Rising atmospheric CO<sub>2</sub> hands a plant more carbon than its metabolism is built to spend. My PhD asks where that surplus goes &mdash; and what breaks when the plant can no longer park it. The answer runs through the vacuole, and through the tonoplast SWEET transporters that fill and drain it.</p>
+
+        <dl class="qa">
+          <div><dt>Question</dt><dd>Do vacuolar SWEET transporters (SWEET2, SWEET16, SWEET17) act as the buffer that prevents carbon overflow under elevated CO<sub>2</sub>, and what happens to growth and metabolism when that buffer is removed?</dd></div>
+          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with GC&ndash;MS and LC&ndash;MS metabolomics, RT-qPCR and ddPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
+          <div><dt>Why it matters</dt><dd>Carbon allocation is the step between photosynthesis and yield. Knowing which transporters set that allocation, and where it saturates, is what makes it a breeding and engineering target rather than a description.</dd></div>
+        </dl>
+
+        <figure class="flux" style="margin-inline:0">
+          <svg viewBox="0 0 560 176" role="img" aria-label="Schematic: sucrose moves from a source leaf along the phloem to a sink, with a vacuolar pool buffering the flux through SWEET transporters.">
+            <path class="chan" d="M 96 112 L 476 112"/>
+            <path class="chan-in" d="M 96 112 L 476 112"/>
+            <path class="chan" d="M 236 112 C 250 112 252 78 268 78 L 340 78 C 356 78 358 112 372 112" stroke-width="10"/>
+            <path class="chan-in" d="M 236 112 C 250 112 252 78 268 78 L 340 78 C 356 78 358 112 372 112" stroke-width="6.5"/>
+            <rect class="vac" x="262" y="34" width="84" height="34" rx="14"/>
+            <path class="organ" d="M 44 112 C 44 86 62 68 90 68 C 90 96 72 112 44 112 Z"/>
+            <path d="M 90 68 C 74 80 62 96 56 110" fill="none" stroke="var(--ink-3)" stroke-width="1.2"/>
+            <circle class="organ" cx="504" cy="112" r="19"/>
+            <text class="slab" x="44" y="136">source leaf</text>
+            <text class="slab" x="238" y="136">phloem</text>
+            <text class="slab" x="262" y="26">vacuolar pool</text>
+            <text class="slab" x="372" y="64">SWEET2 / 16 / 17</text>
+            <text class="slab" x="478" y="146">sink</text>
+            <circle class="sugar p-main" r="3.6"/>
+            <circle class="sugar p-main" r="3.6" style="animation-delay:-1.3s"/>
+            <circle class="sugar p-main" r="3.6" style="animation-delay:-2.6s"/>
+            <circle class="sugar p-main" r="3.6" style="animation-delay:-3.9s"/>
+            <circle class="sugar b p-vac" r="3.2"/>
+            <circle class="sugar b p-vac" r="3.2" style="animation-delay:-3.2s"/>
+          </svg>
+          <figcaption class="cap">Source &rarr; phloem &rarr; sink, with the vacuole buffering the flux.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="rail"><span class="mono">Earlier projects</span></div>
+      <div>
+        <h2>Seven institutes, one through-line</h2>
+        <p class="intro">Every project below asks a version of the same question: what limits the movement of carbon and nitrogen inside a plant, and which molecules set that limit. The systems changed; the question did not.</p>
+      </div>
+    </div>
+    <div class="cards reveal">
+      <article class="card">
+        <div class="yr">2024 &ndash; 2025</div>
+        <h3>Aureochrome signalling in <i>Nannochloropsis</i></h3>
+        <div class="inst">Department of Plant Biology, Michigan State University</div>
+        <p>Whether blue-light receptors set stress tolerance in a microalga. Wild-type and aureochrome mutants under 8&nbsp;h and 12&nbsp;h photoperiods, challenged with high light, cold and freezing; RNA-seq to map the genes under aureochrome control.</p>
+      </article>
+      <article class="card">
+        <div class="yr">2023 &ndash; 2024</div>
+        <h3>Long-distance sugar transport and transporters</h3>
+        <div class="inst">Institute for Molecular Physiology &amp; Institute of Synthetic Biology, Heinrich Heine University</div>
+        <p>Master thesis. Drove AtSWEET11 in bundle sheath cells with the PULSE optogenetic system to test whether phloem loading can be re-engineered, and ran EMS mutagenesis with whole-genome and RNA sequencing to find the regulators of assimilate partitioning.</p>
+      </article>
+      <article class="card">
+        <div class="yr">2022 &ndash; 2023</div>
+        <h3>Deep learning for single-cell analysis on HPC</h3>
+        <div class="inst">GWDG, G&ouml;ttingen</div>
+        <p>Deployed the DANCE benchmarking framework as a service on GWDG's Scientific Compute Cluster, so single-cell models could be reproduced and compared without each group building its own compute stack.</p>
+      </article>
+      <article class="card">
+        <div class="yr">2022</div>
+        <h3>Selection on flower size in a selfing species</h3>
+        <div class="inst">Department of Plant Biology, Swedish University of Agricultural Sciences</div>
+        <p>Quantitative genetics, population genomics and niche modelling across the range of <i>Arabidopsis thaliana</i>. Flower size turned out to vary far more than a selfer should allow &mdash; published in <i>Molecular Ecology</i>.</p>
+      </article>
+      <article class="card">
+        <div class="yr">2022</div>
+        <h3>Amino acid permeases in phloem loading</h3>
+        <div class="inst">Department of Plant Production, Universitat Polit&egrave;cnica de Val&egrave;ncia</div>
+        <p>Which AAP genes load nitrogen into the phloem and unload it into fruit, across four tomato cultivars with contrasting nitrogen-use efficiency &mdash; groundwork for breeding varieties that yield on less fertiliser.</p>
+      </article>
+      <article class="card">
+        <div class="yr">2021 &ndash; 2022</div>
+        <h3>Stress physiology of <i>Stipa caudata</i></h3>
+        <div class="inst">Department of Agroforestry Ecosystems, UPV, with Universidad de Chile</div>
+        <p>Biochemical profiling under salinity and drought &mdash; proline, MDA, phenolics, flavonoids, chlorophylls and ion balance &mdash; against soil-based drought models, to map how the species holds on.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="rail"><span class="mono">Capabilities</span></div>
+      <div>
+        <h2>What I can run, end to end</h2>
+        <p class="intro">From construct design and plant transformation through to metabolite quantification, and from raw reads on a cluster to a docked structure. The wet-lab half and the computational half are both mine, which is usually where projects lose time.</p>
+      </div>
+    </div>
+    <div class="exp reveal">
+      <div class="exp-col">
+        <h3>Molecular biology &amp; cell biology</h3>
+        <p class="sub">Construct to phenotype, including the transformation and imaging steps.</p>
+        <div class="chips">
+          <span class="chip">CRISPR-Cas9 editing</span><span class="chip">Golden Braid cloning</span><span class="chip">Gibson assembly</span><span class="chip">RNAi</span><span class="chip"><i>in silico</i> plasmid design</span><span class="chip">RT-qPCR</span><span class="chip">ddPCR</span><span class="chip">Stable &amp; transient transformation</span><span class="chip">Protoplast isolation</span><span class="chip">Chloroplast isolation</span><span class="chip">Genotyping &amp; phenotyping</span><span class="chip">Western &amp; dot blot</span><span class="chip">ELISA</span><span class="chip">Protein purification</span><span class="chip">Confocal microscopy</span><span class="chip">smFISH</span><span class="chip">Microtome sectioning</span>
+        </div>
+      </div>
+      <div class="exp-col">
+        <h3>Omics &amp; analytical chemistry</h3>
+        <p class="sub">Quantitative read-outs &mdash; transcript, metabolite and whole-plant gas flux.</p>
+        <div class="chips">
+          <span class="chip">RNA-seq</span><span class="chip">scRNA / snRNA-seq</span><span class="chip">Whole-genome sequencing</span><span class="chip">Whole-plasmid sequencing</span><span class="chip">LC&ndash;MS metabolomics</span><span class="chip">GC&ndash;MS metabolomics</span><span class="chip">Tandem MS</span><span class="chip">HPLC</span><span class="chip">UV-Vis spectrophotometry</span><span class="chip">Flame photometry</span><span class="chip">Gas exchange (LI-6800F)</span><span class="chip">Stable-isotope physiology</span><span class="chip">MZmine</span><span class="chip">MetGem</span><span class="chip">Sirius</span>
+        </div>
+      </div>
+      <div class="exp-col">
+        <h3>Computational &amp; structural</h3>
+        <p class="sub">Cluster-scale analysis, statistical genetics and molecular simulation.</p>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">R</span><span class="chip">Bash / Linux</span><span class="chip">SLURM &amp; PBS on HPC</span><span class="chip">GWAS</span><span class="chip">GEMMA mixed models</span><span class="chip">AlphaFold3</span><span class="chip">OpenFold3</span><span class="chip">Boltz</span><span class="chip">AutoDock Vina</span><span class="chip">SMINA / GNINA</span><span class="chip">DiffDock</span><span class="chip">GROMACS</span><span class="chip">ChimeraX</span><span class="chip">PyMOL</span><span class="chip">VMD</span><span class="chip">Fiji / ImageJ</span><span class="chip">CellProfiler</span><span class="chip">Ilastik</span><span class="chip">OMERO</span><span class="chip">MEGA</span><span class="chip">SnapGene</span><span class="chip">Benchling</span><span class="chip">Geneious</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="rail"><span class="mono">Publications</span></div>
+      <div>
+        <h2>Peer-reviewed work</h2>
+        <p class="intro">Five publications across plant molecular physiology, evolutionary ecology and plant pathology.</p>
+      </div>
+    </div>
+    <div class="pubs reveal">
+      <article class="pub">
+        <div class="n">2026</div>
+        <div>
+          <h3>Local trade-offs shape flower size evolution across <i>Arabidopsis thaliana</i> distribution</h3>
+          <p class="authors">Sartori, K., Mestre, C.&nbsp;F., <b>Hossain, M.&nbsp;J.</b>, Estarague, A., Gaignon, E., Moulin, P., Lasky, J.&nbsp;R., Vile, D., Vasseur, F., Violle, C., &amp; Sicard, A.</p>
+          <p class="venue"><i>Molecular Ecology</i>, 35(17), e70525. &nbsp;<a class="doi" href="https://doi.org/10.1111/mec.70525">10.1111/mec.70525</a></p>
+        </div>
+      </article>
+      <article class="pub">
+        <div class="n">2026</div>
+        <div>
+          <h3>Unlocking sugar subcellular dynamics: the crucial function and regulation of tonoplast sugar transporters in plant response to climate change</h3>
+          <p class="authors">Keller, I., <b>Hossain, M.&nbsp;J.</b>, Bourgeois, S., Thouzellier, J., Dieuaide-Noubhani, M., &amp; Le Hir, R.</p>
+          <p class="venue"><i>Journal of Experimental Botany</i>, 77(6), 1531&ndash;1549. &nbsp;<a class="doi" href="https://doi.org/10.1093/jxb/eraf525">10.1093/jxb/eraf525</a></p>
+        </div>
+      </article>
+      <article class="pub">
+        <div class="n">2023</div>
+        <div>
+          <h3>Soil health management and microorganisms: recent developments</h3>
+          <p class="authors">Manda, R.&nbsp;R., Addanki, V.&nbsp;A., Giabardo, A., Benjamin, J., <b>Hossain, M.&nbsp;J.</b>, Khanna, S., Gaddam, M., Kumar, R., &amp; Srivastava, S.</p>
+          <p class="venue">In <i>Detection, Diagnosis and Management of Soil-borne Phytopathogens</i>, Chapter 18. Springer. &nbsp;<a class="doi" href="https://doi.org/10.1007/978-981-19-8307-8_18">10.1007/978-981-19-8307-8_18</a></p>
+        </div>
+      </article>
+      <article class="pub">
+        <div class="n">2021</div>
+        <div>
+          <h3>Effect of different mulches on yellow leaf curl disease of tomato and its impact on yield</h3>
+          <p class="authors">Shahin, S.&nbsp;M.&nbsp;N.&nbsp;S., Begum, F., Hossain, M.&nbsp;B., Anik, A.&nbsp;H., &amp; <b>Hossain, M.&nbsp;J.</b></p>
+          <p class="venue"><i>Bangladesh Journal of Plant Pathology</i>, 37(1&ndash;2), 23&ndash;32.</p>
+        </div>
+      </article>
+      <article class="pub">
+        <div class="n">2020</div>
+        <div>
+          <h3>Effect of different planting time on tomato yellow leaf curl virus (TYLCV) of tomato and its impact on yield in Bangladesh</h3>
+          <p class="authors">Anik, A.&nbsp;H., Begum, F., Aminuzzaman, F.&nbsp;M., <b>Hossain, M.&nbsp;J.</b>, Chakma, N., &amp; Shahin, S.&nbsp;M.&nbsp;N.&nbsp;S.</p>
+          <p class="venue"><i>International Journal of Environment, Agriculture and Biotechnology</i>, 5(4), 907&ndash;915. &nbsp;<a class="doi" href="https://doi.org/10.22161/ijeab.54.10">10.22161/ijeab.54.10</a></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="recognition">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="rail"><span class="mono">Recognition</span></div>
+      <div>
+        <h2>Funding, prizes and platforms</h2>
+        <p class="intro">Ten competitive awards across five funding systems &mdash; European, American, French, Japanese and Bangladeshi &mdash; and a growing record of speaking and organising.</p>
+      </div>
+    </div>
+    <div class="two reveal">
+      <div>
+        <h3 class="block">Awards, honours &amp; fellowships</h3>
+        <div class="rows">
+          <div class="row"><span class="yr">2025&ndash;28</span><span class="t"><strong>Doctoral Contract</strong> &mdash; fully funded PhD<small>Universit&eacute; Paris-Saclay, France</small></span></div>
+          <div class="row"><span class="yr">2025</span><span class="t">Rodman Botany Scholarship<small>Michigan State University, USA &middot; $2.1K</small></span></div>
+          <div class="row"><span class="yr">2025</span><span class="t">Summer Supplemental Fellowship<small>Michigan State University, USA &middot; $0.4K</small></span></div>
+          <div class="row"><span class="yr">2024</span><span class="t"><strong>Molecular Plant Science Graduate Fellowship</strong><small>Michigan State University, USA &middot; $68.8K</small></span></div>
+          <div class="row"><span class="yr">2024</span><span class="t">PULSe Lynn Fellowship<small>Purdue University, USA &middot; $70.4K &middot; declined</small></span></div>
+          <div class="row"><span class="yr">2022</span><span class="t">Regional Objectif V&eacute;g&eacute;tal Programme Scholarship<small>Universit&eacute; d'Angers, France &middot; &euro;0.5K</small></span></div>
+          <div class="row"><span class="yr">2021&ndash;23</span><span class="t"><strong>Erasmus Mundus Joint Master Degree Fellowship</strong> (Plant Health)<small>European Union &middot; &euro;49K</small></span></div>
+          <div class="row"><span class="yr">2021</span><span class="t">Erasmus Mundus Joint Master Degree Fellowship (emPLANT+)<small>European Union &middot; &euro;49K &middot; declined</small></span></div>
+          <div class="row"><span class="yr">2019</span><span class="t">JENESYS Scholarship, Agriculture (1st batch)<small>Japan</small></span></div>
+          <div class="row"><span class="yr">2017&ndash;19</span><span class="t">Nagao Natural Environment Foundation Fellowship<small>Japan &middot; &yen;108K</small></span></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="block">Talks &amp; posters</h3>
+        <div class="rows">
+          <div class="row hl"><span class="yr">2026</span><span class="t"><strong>Oral</strong> &mdash; From SWEET to Sour: Metabolic Reprogramming of <i>Arabidopsis thaliana</i> under Elevated CO<sub>2</sub><small>PhD Days 2026, Doctoral School SEVE &middot; IJPB, INRAE Versailles &middot; July</small></span></div>
+          <div class="row hl"><span class="yr">2026</span><span class="t"><strong>Poster &mdash; 1st prize (poster &amp; flash talk)</strong> &middot; Vacuolar SWEET Transporters Prevent Carbon Overflow Under Elevated CO<sub>2</sub><small>INRAE BAP Division PhD &amp; Postdoc Days, Versailles &middot; May</small></span></div>
+          <div class="row"><span class="yr">2025</span><span class="t">Poster &mdash; Regulation of nitrogen partitioning to improve crop yield in low-input agriculture: role of amino acid permeases<small>PlantACT! Conference, Madrid, Spain &middot; April</small></span></div>
+          <div class="row"><span class="yr">2023</span><span class="t">Poster &mdash; Identification of key AAP permeases in tomato regulating amino acid partitioning in response to nitrogen<small>Iberian Plant Biology, Braga, Portugal &middot; July</small></span></div>
+        </div>
+
+        <h3 class="block" style="margin-top:34px">Organising, service &amp; teaching</h3>
+        <div class="rows">
+          <div class="row"><span class="yr">2026</span><span class="t">Organiser &mdash; INRAE BAP Division PhD &amp; Postdoc Days<small>IJPB, INRAE Versailles</small></span></div>
+          <div class="row"><span class="yr">2025</span><span class="t">Organiser &mdash; 3rd Workshop on Carbon Allocation in Plants<small>IJPB, INRAE Versailles</small></span></div>
+          <div class="row"><span class="yr">2023&ndash;25</span><span class="t">Engagement &amp; Innovation Strategist, Research &amp; Innovation Unit<small>Erasmus Mundus Association (EMA-AISBL), EU</small></span></div>
+          <div class="row"><span class="yr">2023&ndash;25</span><span class="t">Deputy Director, Research &amp; Development Unit<small>Univ, Bangladesh</small></span></div>
+          <div class="row"><span class="yr">2020&ndash;21</span><span class="t">Co-founder &amp; Joint Convener, SAU Science Club<small>Sher-e-Bangla Agricultural University, Bangladesh</small></span></div>
+          <div class="row"><span class="yr">2017&ndash;20</span><span class="t">Lecturer<small>Protiva Multi Education Foundation, Bangladesh</small></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="path">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="rail"><span class="mono">Training</span></div>
+      <div>
+        <h2>Education</h2>
+        <p class="intro">An Erasmus Mundus route through Germany and Spain, a year in a US plant biology programme, and a fully funded doctorate in France.</p>
+      </div>
+    </div>
+    <div class="tl reveal">
+      <div class="tl-yr">2025 &ndash; present</div>
+      <div class="tl-it mark">
+        <h4>PhD, Plant Science</h4>
+        <div class="org">Universit&eacute; Paris-Saclay &middot; Doctoral School SEVE (Sciences du V&eacute;g&eacute;tal, Ecology, Evolution), France</div>
+        <div class="proj">Hosted at IJPB, INRAE Versailles</div>
+      </div>
+      <div class="tl-yr">2024 &ndash; 2025</div>
+      <div class="tl-it">
+        <h4>PhD Graduate Student, Molecular Plant Science &amp; Plant Biology</h4>
+        <div class="org">Michigan State University, USA</div>
+        <div class="proj">Withdrawn to take up the funded doctorate at Paris-Saclay</div>
+      </div>
+      <div class="tl-yr">2021 &ndash; 2024</div>
+      <div class="tl-it mark">
+        <h4>Erasmus Mundus Joint Master Degree in Plant Health</h4>
+        <div class="org">Georg-August-Universit&auml;t G&ouml;ttingen, Germany &middot; Universitat Polit&egrave;cnica de Val&egrave;ncia, Spain</div>
+      </div>
+      <div class="tl-yr">2022</div>
+      <div class="tl-it">
+        <h4>Plant Health and Quality Summer School</h4>
+        <div class="org">Universit&eacute; d'Angers, France</div>
+      </div>
+      <div class="tl-yr">2016 &ndash; 2021</div>
+      <div class="tl-it">
+        <h4>BSc in Agriculture</h4>
+        <div class="org">Sher-e-Bangla Agricultural University, Bangladesh</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="rail"><span class="mono">Contact</span></div>
+      <div>
+        <h2>Let's talk</h2>
+        <p class="intro">I am always glad to hear from groups and companies working on carbon and nitrogen allocation, transporter biology, or metabolic phenotyping at scale.</p>
+      </div>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="avail">
+          <div class="mono">Availability</div>
+          <p>Doctorate runs to 2028. Open now to collaborations, method exchanges and joint proposals; open to conversations about industry R&amp;D and postdoctoral positions from 2027.</p>
+        </div>
+        <div class="clist">
+          <div class="crow"><span class="mono">Email</span><span><a href="mailto:md-jonaid.hossain@inrae.fr">md-jonaid.hossain@inrae.fr</a></span></div>
+          <div class="crow"><span class="mono">Based in</span><span>Versailles &middot; Paris region, France</span></div>
+          <div class="crow"><span class="mono">Affiliation</span><span>Institut Jean-Pierre Bourgin, INRAE &middot; AgroParisTech &middot; Universit&eacute; Paris-Saclay</span></div>
+          <div class="crow"><span class="mono">Languages</span><span>Bengali (native) &middot; English (full professional) &middot; French (learning)</span></div>
+          <div class="crow"><span class="mono">Societies</span><span>SFBV &middot; ASPB &middot; EMA-AISBL</span></div>
+          <div class="crow" id="cv-download"><span class="mono">CV</span><span>Full CV (PDF) &mdash; link to add</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="block">References</h3>
+        <div class="refs">
+          <div class="ref"><b>Dr Rozenn Le Hir</b><span>Senior Research Scientist, IJPB, INRAE Versailles, France &mdash; PhD supervisor</span></div>
+          <div class="ref"><b>Dr Ji-Yun Kim</b><span>Department of Biological Sciences, Sungkyunkwan University, Seoul, South Korea</span></div>
+          <div class="ref"><b>Prof. Dr Sergio Gonz&aacute;lez Nebauer</b><span>Department of Plant Production, Universitat Polit&egrave;cnica de Val&egrave;ncia, Spain</span></div>
+        </div>
+      </div>
+    </div>
+    <footer class="wrap" style="padding-inline:0">
+      <span>&copy; 2026 Md Jonaid Hossain</span>
+      <span class="mono">Versailles &middot; France</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* theme toggle */
+(function(){
+  var root = document.documentElement, btn = document.getElementById('themeToggle');
+  try{ var saved = localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme', saved); }catch(e){}
+  btn.addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    if(!cur){ cur = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+})();
+
+/* scroll reveal with a hard safety net */
+(function(){
+  var items = [].slice.call(document.querySelectorAll('.reveal'));
+  function showAll(){ items.forEach(function(el){ el.classList.add('in'); }); }
+  if(!('IntersectionObserver' in window)){ showAll(); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+  items.forEach(function(el){ io.observe(el); });
+  setTimeout(showAll, 1600);
+})();
+
+/* count-up on the metrics */
+(function(){
+  var nums = [].slice.call(document.querySelectorAll('.metric .num'));
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function run(el){
+    var txt = el.textContent, m = txt.match(/^(\d+)/);
+    if(!m) return;
+    var target = parseInt(m[1], 10), suffix = txt.slice(m[1].length), t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / 900, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){ return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
+  }, {threshold:0.5});
+  nums.forEach(function(n){ io.observe(n); });
+})();
+</script>
+
+</body>
+</html>
