@@ -20,91 +20,7 @@
     html,body{margin:0}
     img{max-width:100%}
     [hidden]{display:none!important}
-  
-/* ---------- motion layer ---------- */
-.nav{transition:box-shadow .4s ease, background-color .4s ease}
-.nav.scrolled{box-shadow:0 1px 0 var(--rule), 0 10px 30px -24px rgba(0,0,0,.5)}
-.nav-in{transition:height .4s cubic-bezier(.2,.7,.3,1)}
-.nav.scrolled .nav-in{height:50px}
-
-#progress{
-  position:absolute; left:0; bottom:-1px; height:2px; width:100%;
-  background:linear-gradient(90deg, var(--amber), var(--teal));
-  transform:scaleX(0); transform-origin:left;
-  transition:transform .12s linear;
-}
-.nav-links a.active{color:var(--ink)}
-.nav-links a.active::after{transform:scaleX(1)}
-
-/* staggered children */
-html.js .stagger > *{opacity:.001; transform:translateY(16px)}
-html.js .stagger.in > *{
-  opacity:1; transform:none;
-  transition:opacity .72s cubic-bezier(.16,.84,.34,1), transform .72s cubic-bezier(.16,.84,.34,1);
-  transition-delay:calc(var(--i, 0) * 55ms);
-}
-
-/* card hover: lift + accent sweep */
-.card{position:relative; transition:background .35s ease, transform .45s cubic-bezier(.2,.7,.3,1)}
-.card::after{
-  content:""; position:absolute; left:0; right:0; top:0; height:2px;
-  background:var(--amber); transform:scaleX(0); transform-origin:left;
-  transition:transform .5s cubic-bezier(.2,.7,.3,1);
-}
-.card:hover{transform:translateY(-3px)}
-.card:hover::after{transform:scaleX(1)}
-
-/* publications: accent rail on hover */
-.pub{position:relative; transition:background .35s ease}
-.pub::before{
-  content:""; position:absolute; left:-14px; top:18px; bottom:18px; width:2px;
-  background:var(--amber); transform:scaleY(0); transform-origin:top;
-  transition:transform .45s cubic-bezier(.2,.7,.3,1);
-}
-.pub:hover::before{transform:scaleY(1)}
-.pub h3{transition:color .3s ease}
-.pub:hover h3{color:var(--amber-ink)}
-
-/* timeline dots breathe on the marked entries */
-@keyframes dotpulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--amber) 55%, transparent)} 70%{box-shadow:0 0 0 7px transparent}}
-.tl-it.mark::before{animation:dotpulse 3.6s ease-out infinite}
-
-/* the vacuole breathes, because that is what it does */
-@keyframes breathe{0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.09)}}
-.vac{transform-box:fill-box; transform-origin:center; animation:breathe 5.6s ease-in-out infinite}
-
-/* places grid: same lift language as the cards */
-.shot{position:relative; transition:background .35s ease, transform .45s cubic-bezier(.2,.7,.3,1)}
-.shot::after{
-  content:""; position:absolute; left:0; right:0; top:0; height:2px;
-  background:var(--teal); transform:scaleX(0); transform-origin:left;
-  transition:transform .5s cubic-bezier(.2,.7,.3,1);
-}
-.shot:hover{transform:translateY(-3px)}
-.shot:hover::after{transform:scaleX(1)}
-
-/* theme switch cross-fades instead of snapping */
-html.theme-anim, html.theme-anim *{
-  transition:background-color .45s ease, color .45s ease, border-color .45s ease, fill .45s ease, stroke .45s ease !important;
-}
-
-/* buttons get a light sweep */
-.btn{position:relative; overflow:hidden}
-.btn::before{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.18) 50%, transparent 80%);
-  transform:translateX(-120%); transition:transform .7s cubic-bezier(.2,.7,.3,1);
-}
-.btn:hover::before{transform:translateX(120%)}
-
-@media (prefers-reduced-motion:reduce){
-  html.js .stagger > *{opacity:1 !important; transform:none !important; transition:none !important}
-  .vac, .tl-it.mark::before{animation:none !important}
-  .card:hover, .shot:hover{transform:none}
-  #progress{display:none}
-  html.theme-anim, html.theme-anim *{transition:none !important}
-}
-</style>
+  </style>
 </head>
 <body>
 <style>
@@ -398,8 +314,95 @@ h3.block{font-size:15px; margin-bottom:14px; padding-bottom:10px; border-bottom:
 @media (max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:36px} }
 
 footer{padding-block:30px 40px; color:var(--ink-3); font-size:13px; display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between}
+
+/* ---------- print: the page is the CV ---------- */
+@media print{
+  :root{
+    --paper:#fff; --surface:#fff; --surface-2:#fff;
+    --ink:#101010; --ink-2:#333; --ink-3:#5a5a5a;
+    --rule:#cfcfcf; --rule-strong:#a8a8a8;
+    --amber:#8a5214; --amber-ink:#8a5214; --amber-wash:#fff;
+    --teal:#1f5647; --teal-wash:#fff; --shadow:none;
+  }
+  .nav, #progress, .theme-btn, .cta-row, .flux, .btn, footer .mono{display:none !important}
+  body{background:#fff !important; color:#101010 !important; font-size:10.5pt}
+  a{color:#101010; text-decoration:none}
+  section{padding-block:16pt; border-bottom:0}
+  .hero{padding-block:0 14pt; border-bottom:1px solid #cfcfcf}
+  h1{font-size:30pt}
+  .thesis{font-size:13pt}
+  .lede{font-size:10.5pt}
+  .sec-head{margin-bottom:14pt}
+  .sec-head h2{font-size:16pt}
+  .metrics{background:#fff}
+  .metric .num{color:#8a5214}
+  .portrait{max-width:130px}
+  .card, .shot, .pub, .row, .tl-it, .tl-yr, .exp-col, .ref{break-inside:avoid}
+  .cards, .gal{border:0; background:#fff; gap:0}
+  .card, .shot{border:1px solid #cfcfcf; margin:-0.5px}
+  .card::after, .shot::after, .pub::before{display:none}
+  .chip{border-color:#cfcfcf; background:#fff}
+  .pub a.doi::after{content:" \2014 " attr(href); font-size:8pt; color:#5a5a5a}
+  .avail{border-color:#a8a8a8; background:#fff}
+  html.js .reveal, html.js .reveal.in, html.js .stagger > *{opacity:1 !important; transform:none !important; transition:none !important}
+  @page{margin:14mm}
+}
+
 ::selection{background:var(--amber); color:var(--paper)}
 a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px}
+
+/* ---------- motion layer ---------- */
+.nav{transition:box-shadow .4s ease, background-color .4s ease}
+.nav.scrolled{box-shadow:0 1px 0 var(--rule), 0 10px 30px -24px rgba(0,0,0,.5)}
+.nav-in{transition:height .4s cubic-bezier(.2,.7,.3,1)}
+.nav.scrolled .nav-in{height:50px}
+#progress{position:absolute; left:0; bottom:-1px; height:2px; width:100%;
+  background:linear-gradient(90deg, var(--amber), var(--teal));
+  transform:scaleX(0); transform-origin:left; transition:transform .12s linear}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{transform:scaleX(1)}
+html.js .stagger > *{opacity:.001; transform:translateY(16px)}
+html.js .stagger.in > *{opacity:1; transform:none;
+  transition:opacity .72s cubic-bezier(.16,.84,.34,1), transform .72s cubic-bezier(.16,.84,.34,1);
+  transition-delay:calc(var(--i, 0) * 55ms)}
+.card{position:relative; transition:background .35s ease, transform .45s cubic-bezier(.2,.7,.3,1)}
+.card::after{content:""; position:absolute; left:0; right:0; top:0; height:2px;
+  background:var(--amber); transform:scaleX(0); transform-origin:left;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.card:hover{transform:translateY(-3px)}
+.card:hover::after{transform:scaleX(1)}
+.pub{position:relative; transition:background .35s ease}
+.pub::before{content:""; position:absolute; left:-14px; top:18px; bottom:18px; width:2px;
+  background:var(--amber); transform:scaleY(0); transform-origin:top;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1)}
+.pub:hover::before{transform:scaleY(1)}
+.pub h3{transition:color .3s ease}
+.pub:hover h3{color:var(--amber-ink)}
+@keyframes dotpulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--amber) 55%, transparent)} 70%{box-shadow:0 0 0 7px transparent}}
+.tl-it.mark::before{animation:dotpulse 3.6s ease-out infinite}
+@keyframes breathe{0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.09)}}
+.vac{transform-box:fill-box; transform-origin:center; animation:breathe 5.6s ease-in-out infinite}
+.shot{position:relative; transition:background .35s ease, transform .45s cubic-bezier(.2,.7,.3,1)}
+.shot::after{content:""; position:absolute; left:0; right:0; top:0; height:2px;
+  background:var(--teal); transform:scaleX(0); transform-origin:left;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.shot:hover{transform:translateY(-3px)}
+.shot:hover::after{transform:scaleX(1)}
+html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color .45s ease,
+  border-color .45s ease, fill .45s ease, stroke .45s ease !important}
+.btn{position:relative; overflow:hidden}
+.btn::before{content:""; position:absolute; inset:0;
+  background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.18) 50%, transparent 80%);
+  transform:translateX(-120%); transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.btn:hover::before{transform:translateX(120%)}
+@media (prefers-reduced-motion:reduce){
+  html.js .stagger > *{opacity:1 !important; transform:none !important; transition:none !important}
+  .vac, .tl-it.mark::before{animation:none !important}
+  .card:hover, .shot:hover{transform:none}
+  #progress{display:none}
+  html.theme-anim, html.theme-anim *{transition:none !important}
+}
+@media print{ #progress{display:none !important} }
 </style>
 
 <nav class="nav">
@@ -431,7 +434,6 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-of
       <p class="lede rise d4">Plant molecular physiologist working at the join between wet lab and dry lab. I combine CRISPR genome editing, LC&ndash;MS/GC&ndash;MS metabolomics and gas-exchange physiology with structural modelling and HPC-scale omics &mdash; a method set built across seven research institutes in six countries, from Sher-e-Bangla to G&ouml;ttingen, Val&egrave;ncia, Uppsala, D&uuml;sseldorf, Michigan and now Versailles.</p>
       <div class="cta-row rise d5">
         <a class="btn" href="mailto:md-jonaid.hossain@inrae.fr">Get in touch <span class="arr">&rarr;</span></a>
-        <a class="btn ghost" href="#cv-download">Download CV (PDF)</a>
         <a class="btn ghost" href="#research">Read the research</a>
       </div>
     </div>
@@ -797,8 +799,11 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-of
           <div class="crow"><span class="mono">Affiliation</span><span>Institut Jean-Pierre Bourgin, INRAE &middot; AgroParisTech &middot; Universit&eacute; Paris-Saclay</span></div>
           <div class="crow"><span class="mono">Languages</span><span>Bengali (native) &middot; English (full professional) &middot; French (learning)</span></div>
           <div class="crow"><span class="mono">Societies</span><span>SFBV &middot; ASPB &middot; EMA-AISBL</span></div>
-          <div class="crow" id="cv-download"><span class="mono">CV</span><span>Full CV (PDF) &mdash; link to add</span></div>
           <div class="crow"><span class="mono">References</span><span>Available on request</span></div>
+        </div>
+        <div style="margin-top:22px">
+          <button class="btn ghost" id="printBtn" type="button">Save this page as PDF</button>
+          <p class="mono" style="margin-top:9px">This page is the CV &mdash; it prints to one clean document</p>
         </div>
       </div>
     </div>
@@ -811,6 +816,9 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-of
 
 <script>
 document.documentElement.classList.add('js');
+
+var pb = document.getElementById('printBtn');
+if(pb) pb.addEventListener('click', function(){ window.print(); });
 
 /* theme toggle */
 (function(){
@@ -863,6 +871,50 @@ document.documentElement.classList.add('js');
     es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
   }, {threshold:0.5});
   nums.forEach(function(n){ io.observe(n); });
+})();
+
+(function(){
+  document.querySelectorAll('.stagger').forEach(function(g){
+    [].slice.call(g.children).forEach(function(el, i){ el.style.setProperty('--i', i); });
+  });
+})();
+
+(function(){
+  var bar = document.getElementById('progress');
+  var nav = document.querySelector('.nav');
+  var ticking = false;
+  function paint(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(window.scrollY / h, 1) : 0;
+    if(bar) bar.style.transform = 'scaleX(' + p + ')';
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 24);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(paint); }
+  }, {passive:true});
+  paint();
+})();
+
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  if(!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var sec = document.getElementById(id);
+    if(sec) map[id] = a;
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a) a.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
 })();
 </script>
 
