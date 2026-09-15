@@ -290,6 +290,41 @@ section{padding-block:76px; border-bottom:1px solid var(--rule)}
 .flux .state{transition:opacity .45s ease}
 .flux .cap b{color:var(--amber-ink); font-weight:500}
 
+
+/* ---------- the route: seven institutes as one transport path ---------- */
+.route{margin:0 0 42px; position:relative}
+.route-scroll{overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
+.route-scroll::-webkit-scrollbar{display:none}
+.route svg{display:block; width:100%; height:auto; min-width:760px}
+.rpath{fill:none; stroke:var(--rule-strong); stroke-width:2.5; stroke-linecap:round}
+.rflow{fill:none; stroke:var(--amber); stroke-width:2.5; stroke-linecap:round; opacity:.35;
+  stroke-dasharray:1 10; animation:rdash 3.5s linear infinite}
+@keyframes rdash{to{stroke-dashoffset:-22}}
+.rnode{cursor:pointer}
+.rnode circle{fill:var(--paper); stroke:var(--rule-strong); stroke-width:2.5;
+  transition:stroke .3s ease, fill .3s ease}
+.rnode:hover circle, .rnode:focus-visible circle{stroke:var(--amber)}
+.rnode.now circle{fill:var(--amber); stroke:var(--amber)}
+.rnode text{font-family:var(--f-mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase;
+  fill:var(--ink-3); transition:fill .3s ease}
+.rnode .rname{font-size:12px; fill:var(--ink-2); letter-spacing:.06em}
+.rnode:hover .rname, .rnode:focus-visible .rname{fill:var(--amber-ink)}
+.rnode:hover text, .rnode:focus-visible text{fill:var(--ink-2)}
+.rnode.now .rname{fill:var(--amber-ink)}
+.rnode:focus{outline:none}
+.rnode:focus-visible circle{stroke-width:4}
+.rsugar{fill:var(--amber); animation:rmove 11s linear infinite}
+@keyframes rmove{from{offset-distance:0%} to{offset-distance:100%}}
+.rhint{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-3); margin-top:10px}
+.card.flash{animation:cardflash 1.8s cubic-bezier(.2,.7,.3,1) 1}
+@keyframes cardflash{0%{box-shadow:inset 0 0 0 2px var(--amber); background:var(--surface)}
+  100%{box-shadow:inset 0 0 0 2px transparent}}
+.metric a{text-decoration:none; color:inherit; display:block; transition:color .25s ease}
+.metric a:hover .num{color:var(--amber-ink)}
+.metric a:hover .lab{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){ .rflow, .rsugar{animation:none} .card.flash{animation:none} }
+
 /* ---------- cards ---------- */
 .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(378px,100%),1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
 .card{background:var(--paper); padding:26px 24px; transition:background .3s ease}
@@ -638,10 +673,10 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
 
 <div class="metrics">
   <div class="wrap metrics-grid">
-    <div class="metric"><div class="num">5</div><div class="lab">peer-reviewed publications, incl. <i>Molecular Ecology</i> and <i>JXB</i></div></div>
-    <div class="metric"><div class="num">7</div><div class="lab">research institutes across six countries</div></div>
-    <div class="metric"><div class="num">10</div><div class="lab">competitive fellowships and scholarships awarded</div></div>
-    <div class="metric"><div class="num">1st</div><div class="lab">prize, poster &amp; flash talk &mdash; INRAE BAP PhD &amp; Postdoc Days 2026</div></div>
+    <div class="metric"><a href="#publications"><div class="num">5</div><div class="lab">peer-reviewed publications, incl. <i>Molecular Ecology</i> and <i>JXB</i></div></a></div>
+    <div class="metric"><a href="#portfolio"><div class="num">7</div><div class="lab">research institutes across six countries</div></a></div>
+    <div class="metric"><a href="#recognition"><div class="num">10</div><div class="lab">competitive fellowships and scholarships awarded</div></a></div>
+    <div class="metric"><a href="#recognition"><div class="num">1st</div><div class="lab">prize, poster &amp; flash talk &mdash; INRAE BAP PhD &amp; Postdoc Days 2026</div></a></div>
   </div>
 </div>
 
@@ -724,8 +759,62 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
         <p class="intro">Every project below asks a version of the same question: what limits the movement of carbon and nitrogen inside a plant, and which molecules set that limit. The systems changed; the question did not.</p>
       </div>
     </div>
+    <figure class="route reveal" style="margin-inline:0">
+      <div class="route-scroll">
+        <svg viewBox="0 0 1000 200" role="img" aria-label="Seven research institutes across six countries, in order: SAU Bangladesh, UPV Spain, SLU Sweden, GWDG Germany, HHU Germany, MSU USA, IJPB France.">
+          <path class="rpath" d="M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104"/>
+          <path class="rflow" d="M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104"/>
+            <g class="rnode" tabindex="0" role="link" data-go="#path" aria-label="SAU, Bangladesh">
+              <circle cx="60" cy="118" r="7"/>
+              <text class="rname" x="60" y="146" text-anchor="start">SAU</text>
+              <text x="60" y="160" text-anchor="start">Bangladesh</text>
+              <text x="60" y="174" text-anchor="start">2019 &ndash; 21</text>
+            </g>
+            <g class="rnode" tabindex="0" role="link" data-go="#p-stipa" aria-label="UPV, Spain">
+              <circle cx="210" cy="96" r="7"/>
+              <text class="rname" x="210" y="50" text-anchor="middle">UPV</text>
+              <text x="210" y="64" text-anchor="middle">Spain</text>
+              <text x="210" y="78" text-anchor="middle">2021 &ndash; 22</text>
+            </g>
+            <g class="rnode" tabindex="0" role="link" data-go="#p-slu" aria-label="SLU, Sweden">
+              <circle cx="360" cy="112" r="7"/>
+              <text class="rname" x="360" y="140" text-anchor="middle">SLU</text>
+              <text x="360" y="154" text-anchor="middle">Sweden</text>
+              <text x="360" y="168" text-anchor="middle">2022</text>
+            </g>
+            <g class="rnode" tabindex="0" role="link" data-go="#p-gwdg" aria-label="GWDG, Germany">
+              <circle cx="510" cy="88" r="7"/>
+              <text class="rname" x="510" y="42" text-anchor="middle">GWDG</text>
+              <text x="510" y="56" text-anchor="middle">Germany</text>
+              <text x="510" y="70" text-anchor="middle">2022 &ndash; 23</text>
+            </g>
+            <g class="rnode" tabindex="0" role="link" data-go="#p-hhu" aria-label="HHU, Germany">
+              <circle cx="660" cy="108" r="7"/>
+              <text class="rname" x="660" y="136" text-anchor="middle">HHU</text>
+              <text x="660" y="150" text-anchor="middle">Germany</text>
+              <text x="660" y="164" text-anchor="middle">2023 &ndash; 24</text>
+            </g>
+            <g class="rnode" tabindex="0" role="link" data-go="#p-msu" aria-label="MSU, USA">
+              <circle cx="810" cy="84" r="7"/>
+              <text class="rname" x="810" y="38" text-anchor="middle">MSU</text>
+              <text x="810" y="52" text-anchor="middle">USA</text>
+              <text x="810" y="66" text-anchor="middle">2024 &ndash; 25</text>
+            </g>
+            <g class="rnode now" tabindex="0" role="link" data-go="#research" aria-label="IJPB, France">
+              <circle cx="940" cy="104" r="7"/>
+              <text class="rname" x="940" y="132" text-anchor="end">IJPB</text>
+              <text x="940" y="146" text-anchor="end">France</text>
+              <text x="940" y="160" text-anchor="end">2025 &ndash;</text>
+            </g>
+          <circle class="rsugar" r="4" style="offset-path:path('M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104')"/>
+          <circle class="rsugar" r="4" style="offset-path:path('M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104'); animation-delay:-3.7s"/>
+          <circle class="rsugar" r="4" style="offset-path:path('M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104'); animation-delay:-7.4s"/>
+        </svg>
+      </div>
+      <figcaption class="rhint">Pick a stop to jump to that work</figcaption>
+    </figure>
     <div class="cards reveal stagger">
-      <article class="card">
+      <article class="card" id="p-msu">
         <div class="yr">2024 &ndash; 2025</div>
         <h3>Aureochrome signalling in <i>Nannochloropsis</i></h3>
         <div class="inst">Department of Plant Biology, Michigan State University</div>
@@ -745,7 +834,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <figcaption>Longer days, more aureochrome signal, more tolerance to light, cold and freezing. Schematic.</figcaption>
         </figure>
       </article>
-      <article class="card">
+      <article class="card" id="p-hhu">
         <div class="yr">2023 &ndash; 2024</div>
         <h3>Long-distance sugar transport and transporters</h3>
         <div class="inst">Institute for Molecular Physiology &amp; Institute of Synthetic Biology, Heinrich Heine University</div>
@@ -771,7 +860,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <figcaption>Red light switches transcription on, transporters appear in the bundle sheath, sugar moves. Schematic.</figcaption>
         </figure>
       </article>
-      <article class="card">
+      <article class="card" id="p-gwdg">
         <div class="yr">2022 &ndash; 2023</div>
         <h3>Deep learning for single-cell analysis on HPC</h3>
         <div class="inst">GWDG, G&ouml;ttingen</div>
@@ -787,7 +876,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <figcaption>Cell clustering and type identification, benchmarked on an HPC cluster. Schematic.</figcaption>
         </figure>
       </article>
-      <article class="card">
+      <article class="card" id="p-slu">
         <div class="yr">2022</div>
         <h3>Selection on flower size in a selfing species</h3>
         <div class="inst">Department of Plant Biology, Swedish University of Agricultural Sciences</div>
@@ -809,7 +898,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <figcaption>Flower size shrinks toward the climatic boundaries of the range. Schematic of the published pattern.</figcaption>
         </figure>
       </article>
-      <article class="card">
+      <article class="card" id="p-aap">
         <div class="yr">2022</div>
         <h3>Amino acid permeases in phloem loading</h3>
         <div class="inst">Department of Plant Production, Universitat Polit&egrave;cnica de Val&egrave;ncia</div>
@@ -838,7 +927,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <figcaption>Which permeases load amino acids into the phloem, and how much nitrogen reaches the fruit. Schematic.</figcaption>
         </figure>
       </article>
-      <article class="card">
+      <article class="card" id="p-stipa">
         <div class="yr">2021 &ndash; 2022</div>
         <h3>Stress physiology of <i>Stipa caudata</i></h3>
         <div class="inst">Department of Agroforestry Ecosystems, UPV, with Universidad de Chile</div>
@@ -1321,6 +1410,29 @@ if(pb) pb.addEventListener('click', function(){ window.print(); });
   }, {passive:true});
   window.addEventListener('resize', paint);
   paint();
+})();
+
+/* the route steers to the work */
+(function(){
+  var nodes = [].slice.call(document.querySelectorAll('.rnode'));
+  if(!nodes.length) return;
+  function go(sel){
+    var t = document.querySelector(sel);
+    if(!t) return;
+    t.scrollIntoView({behavior:'smooth', block:'center'});
+    if(t.classList.contains('card')){
+      t.classList.remove('flash');
+      void t.offsetWidth;
+      t.classList.add('flash');
+      setTimeout(function(){ t.classList.remove('flash'); }, 1900);
+    }
+  }
+  nodes.forEach(function(n){
+    n.addEventListener('click', function(){ go(n.getAttribute('data-go')); });
+    n.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(n.getAttribute('data-go')); }
+    });
+  });
 })();
 </script>
 
