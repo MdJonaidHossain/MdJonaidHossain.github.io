@@ -145,6 +145,19 @@ h1{font-size:clamp(46px, 8vw, 78px); line-height:.98; letter-spacing:-.025em; ma
 .btn .arr{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
 .btn:hover .arr{transform:translateX(3px)}
 
+
+/* ---------- profile links ---------- */
+.profiles{display:flex; flex-wrap:wrap; align-items:center; margin-top:20px}
+.profiles a{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3); text-decoration:none; padding:6px 0; position:relative; transition:color .25s ease;
+}
+.profiles a:hover{color:var(--amber-ink)}
+.profiles a::after{content:""; position:absolute; left:0; right:0; bottom:2px; height:1px; background:var(--amber);
+  transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(.2,.7,.3,1)}
+.profiles a:hover::after{transform:scaleX(1)}
+.profiles .sep{color:var(--rule-strong); padding:0 11px; user-select:none; font-size:11px}
+
 .portrait{
   position:relative; aspect-ratio:1/1.12; border:1px solid var(--rule-strong); border-radius:2px;
   background:
@@ -580,6 +593,15 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
       <div class="cta-row rise d5">
         <a class="btn" href="mailto:md-jonaid.hossain@inrae.fr">Get in touch <span class="arr">&rarr;</span></a>
         <a class="btn ghost" href="#research">Read the research</a>
+      </div>
+      <div class="profiles rise d6">
+        <a href="https://orcid.org/0000-0001-6259-3612" target="_blank" rel="noopener">ORCID</a>
+        <span class="sep">/</span>
+        <a href="https://www.linkedin.com/in/drjonaid/" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sep">/</span>
+        <a href="https://github.com/MdJonaidHossain" target="_blank" rel="noopener">GitHub</a>
+        <span class="sep">/</span>
+        <a href="https://x.com/DrJonaid" target="_blank" rel="noopener">X</a>
       </div>
     </div>
     <figure class="portrait rise d3" style="margin:0">
@@ -1068,6 +1090,8 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <div class="crow"><span class="mono">Based in</span><span>Versailles &middot; Paris region, France</span></div>
           <div class="crow"><span class="mono">Affiliation</span><span>Institut Jean-Pierre Bourgin, INRAE &middot; AgroParisTech &middot; Universit&eacute; Paris-Saclay</span></div>
           <div class="crow"><span class="mono">Languages</span><span>Bengali (native) &middot; English (full professional) &middot; French (learning)</span></div>
+          <div class="crow"><span class="mono">ORCID</span><span><a href="https://orcid.org/0000-0001-6259-3612" target="_blank" rel="noopener">0000-0001-6259-3612</a></span></div>
+          <div class="crow"><span class="mono">LinkedIn</span><span><a href="https://www.linkedin.com/in/drjonaid/" target="_blank" rel="noopener">linkedin.com/in/drjonaid</a></span></div>
           <div class="crow"><span class="mono">Societies</span><span>SFBV &middot; ASPB &middot; EMA-AISBL</span></div>
           <div class="crow"><span class="mono">References</span><span>Available on request</span></div>
         </div>
@@ -1109,7 +1133,13 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
   ],
   "knowsAbout": ["Plant molecular physiology","Sugar transport","SWEET transporters","Carbon allocation","Elevated CO2","Metabolomics","Arabidopsis thaliana","Phloem loading"],
   "knowsLanguage": ["Bengali","English","French"],
-  "sameAs": ["https://github.com/MdJonaidHossain"]
+  "identifier": "https://orcid.org/0000-0001-6259-3612",
+  "sameAs": [
+    "https://orcid.org/0000-0001-6259-3612",
+    "https://www.linkedin.com/in/drjonaid/",
+    "https://github.com/MdJonaidHossain",
+    "https://x.com/DrJonaid"
+  ]
 }
 
 (function(){
