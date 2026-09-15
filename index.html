@@ -253,7 +253,7 @@ section{padding-block:76px; border-bottom:1px solid var(--rule)}
 .flux .cap b{color:var(--amber-ink); font-weight:500}
 
 /* ---------- cards ---------- */
-.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(378px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(378px,100%),1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
 .card{background:var(--paper); padding:26px 24px; transition:background .3s ease}
 .card:hover{background:var(--surface)}
 .card .yr{font-family:var(--f-mono); font-size:11px; letter-spacing:.09em; color:var(--amber); margin-bottom:10px}
@@ -353,6 +353,13 @@ section{padding-block:76px; border-bottom:1px solid var(--rule)}
   .cl{transform:scale(.3)}
 }
 
+@media (max-width:520px){
+  .mech figcaption{font-size:9px; padding:0 10px 9px}
+  .card{padding:22px 18px}
+  .metric .num{font-size:31px}
+  h1{letter-spacing:-.02em}
+}
+
 /* ---------- expertise ---------- */
 .exp{display:grid; grid-template-columns:repeat(3,1fr); gap:34px}
 .exp-col h3{font-size:16px; letter-spacing:-.005em; margin-bottom:6px}
@@ -412,7 +419,7 @@ h3.block{font-size:15px; margin-bottom:14px; padding-bottom:10px; border-bottom:
 
 
 /* ---------- places ---------- */
-.gal{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.gal{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(232px,100%),1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
 .shot{margin:0; background:var(--paper); padding:20px 20px 22px; transition:background .3s ease}
 .shot:hover{background:var(--surface)}
 .shot .cap-t{font-size:15px; font-weight:600; line-height:1.3; font-family:var(--f-display)}
@@ -587,7 +594,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
 
         <dl class="qa reveal stagger">
           <div><dt>Question</dt><dd>Do vacuolar SWEET transporters (SWEET2, SWEET16, SWEET17) act as the buffer that prevents carbon overflow under elevated CO<sub>2</sub>, and what happens to growth and metabolism when that buffer is removed?</dd></div>
-          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with GC&ndash;MS and LC&ndash;MS metabolomics, RT-qPCR and ddPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
+          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with RNA-seq, GC&ndash;MS and LC&ndash;MS metabolomics, RT-qPCR and ddPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
           <div><dt>Why it matters</dt><dd>Carbon allocation is the step between photosynthesis and yield. Knowing which transporters set that allocation, and where it saturates, is what makes it a breeding and engineering target rather than a description.</dd></div>
         </dl>
 
@@ -1049,6 +1056,79 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
   </div>
 </section>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Md Jonaid Hossain",
+  "alternateName": "Jonaid",
+  "givenName": "Md Jonaid",
+  "familyName": "Hossain",
+  "jobTitle": "PhD Researcher, Plant Molecular Physiology",
+  "email": "mailto:md-jonaid.hossain@inrae.fr",
+  "url": "https://mdjonaidhossain.github.io/",
+  "image": "https://avatars.githubusercontent.com/MdJonaidHossain?s=600",
+  "worksFor": {
+    "@type": "ResearchOrganization",
+    "name": "Institut Jean-Pierre Bourgin (IJPB), INRAE",
+    "parentOrganization": {"@type": "CollegeOrUniversity", "name": "Universit\u00e9 Paris-Saclay"}
+  },
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity", "name": "Georg-August-Universit\u00e4t G\u00f6ttingen"},
+    {"@type": "CollegeOrUniversity", "name": "Universitat Polit\u00e8cnica de Val\u00e8ncia"},
+    {"@type": "CollegeOrUniversity", "name": "Michigan State University"},
+    {"@type": "CollegeOrUniversity", "name": "Sher-e-Bangla Agricultural University"}
+  ],
+  "knowsAbout": ["Plant molecular physiology","Sugar transport","SWEET transporters","Carbon allocation","Elevated CO2","Metabolomics","Arabidopsis thaliana","Phloem loading"],
+  "knowsLanguage": ["Bengali","English","French"],
+  "sameAs": ["https://github.com/MdJonaidHossain"]
+}
+
+(function(){
+  document.querySelectorAll('.stagger').forEach(function(g){
+    [].slice.call(g.children).forEach(function(el, i){ el.style.setProperty('--i', i); });
+  });
+})();
+
+(function(){
+  var bar = document.getElementById('progress');
+  var nav = document.querySelector('.nav');
+  var ticking = false;
+  function paint(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(window.scrollY / h, 1) : 0;
+    if(bar) bar.style.transform = 'scaleX(' + p + ')';
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 24);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(paint); }
+  }, {passive:true});
+  paint();
+})();
+
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  if(!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var sec = document.getElementById(id);
+    if(sec) map[id] = a;
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a) a.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
+</script>
+
 <script>
 document.documentElement.classList.add('js');
 
@@ -1157,50 +1237,6 @@ if(pb) pb.addEventListener('click', function(){ window.print(); });
   }, {passive:true});
   window.addEventListener('resize', paint);
   paint();
-})();
-
-(function(){
-  document.querySelectorAll('.stagger').forEach(function(g){
-    [].slice.call(g.children).forEach(function(el, i){ el.style.setProperty('--i', i); });
-  });
-})();
-
-(function(){
-  var bar = document.getElementById('progress');
-  var nav = document.querySelector('.nav');
-  var ticking = false;
-  function paint(){
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    var p = h > 0 ? Math.min(window.scrollY / h, 1) : 0;
-    if(bar) bar.style.transform = 'scaleX(' + p + ')';
-    if(nav) nav.classList.toggle('scrolled', window.scrollY > 24);
-    ticking = false;
-  }
-  window.addEventListener('scroll', function(){
-    if(!ticking){ ticking = true; requestAnimationFrame(paint); }
-  }, {passive:true});
-  paint();
-})();
-
-(function(){
-  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
-  if(!links.length || !('IntersectionObserver' in window)) return;
-  var map = {};
-  links.forEach(function(a){
-    var id = a.getAttribute('href').slice(1);
-    var sec = document.getElementById(id);
-    if(sec) map[id] = a;
-  });
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(a){ a.classList.remove('active'); });
-        var a = map[e.target.id];
-        if(a) a.classList.add('active');
-      }
-    });
-  }, {rootMargin:'-45% 0px -50% 0px'});
-  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
 })();
 </script>
 
