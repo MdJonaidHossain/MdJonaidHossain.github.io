@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jonaid - at a glance</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Spectral:ital,wght@0,600&display=swap">
+<style>
+:root{--bg:#080F13;--ink:#E9EFF1;--ink2:#93A6AE;--ink3:#6B7F88;--rule:#1B272D;
+  --rule2:#2C3D45;--amb:#D79A55;--ambi:#E4B274;--srf:#0D161B}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+.w{max-width:1000px;margin:0 auto;padding:30px 22px 26px}
+@keyframes r{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.r{animation:r .9s cubic-bezier(.16,.84,.34,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.46s}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3)}
+h2{font-family:Spectral,Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.015em;line-height:1.2;margin:6px 0 6px}
+p.intro{margin:0 0 4px;color:var(--ink2);max-width:66ch;font-size:15px}
+
+/* metrics */
+.mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:14px 0 34px}
+.mt{background:var(--bg);padding:18px 18px 16px;transition:background .3s ease}
+.mt:hover{background:var(--srf)}
+.mt a{text-decoration:none;color:inherit;display:block}
+.num{font-family:Spectral,Georgia,serif;font-size:36px;line-height:1;color:var(--ambi);
+  letter-spacing:-.02em;transition:color .25s ease}
+.lab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink3);margin-top:9px;line-height:1.5;transition:color .25s ease}
+.mt a:hover .lab{color:var(--ink2)}
+
+/* route */
+.route{margin:18px 0 0}
+.route-scroll{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.route-scroll::-webkit-scrollbar{display:none}
+.route svg{display:block;width:100%;height:auto;min-width:760px}
+.rpath{fill:none;stroke:var(--rule2);stroke-width:2.5;stroke-linecap:round}
+.rflow{fill:none;stroke:var(--amb);stroke-width:2.5;stroke-linecap:round;opacity:.35;
+  stroke-dasharray:1 10;animation:rdash 3.5s linear infinite}
+@keyframes rdash{to{stroke-dashoffset:-22}}
+.rnode{cursor:pointer}
+.rnode circle{fill:var(--bg);stroke:var(--rule2);stroke-width:2.5;transition:stroke .3s ease,fill .3s ease}
+.rnode:hover circle,.rnode:focus-visible circle{stroke:var(--amb)}
+.rnode.now circle{fill:var(--amb);stroke:var(--amb)}
+.rnode text{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;fill:var(--ink3);transition:fill .3s ease}
+.rnode .rname{font-size:12px;fill:var(--ink2);letter-spacing:.06em}
+.rnode:hover .rname,.rnode:focus-visible .rname{fill:var(--ambi)}
+.rnode:hover text,.rnode:focus-visible text{fill:var(--ink2)}
+.rnode.now .rname{fill:var(--ambi)}
+.rnode:focus{outline:none}
+.rnode:focus-visible circle{stroke-width:4}
+.rsugar{fill:var(--amb);animation:rmove 11s linear infinite}
+@keyframes rmove{from{offset-distance:0%}to{offset-distance:100%}}
+.rhint{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink3);margin:8px 0 0}
+
+/* cta */
+.cta{margin:26px 0 0;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  padding:12px 20px;border:1px solid var(--amb);color:#080F13;background:var(--amb);
+  border-radius:2px;transition:background .3s ease,color .3s ease,transform .3s ease}
+.btn:hover{background:var(--ambi);transform:translateY(-2px)}
+.btn .arr{transition:transform .3s cubic-bezier(.16,.84,.34,1)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn.ghost{background:transparent;color:var(--ink2);border-color:var(--rule2)}
+.btn.ghost:hover{background:var(--srf);color:var(--ink);border-color:var(--amb)}
+@media(max-width:560px){
+  html,body{line-height:1.4}
+  .w{padding:9px 10px 8px}
+  .mg{grid-template-columns:1fr 1fr;margin:0 0 9px}
+  .mt{padding:8px 9px 7px}
+  .num{font-size:20px}
+  .lab{font-size:7.5px;letter-spacing:.05em;margin-top:4px;line-height:1.35;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hide-m{display:none}
+  .cta{margin:0;gap:7px}
+  .btn{font-size:8.5px;padding:7px 11px;letter-spacing:.07em}
+}
+@media(prefers-reduced-motion:reduce){.r{animation:none}.rflow,.rsugar{animation:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="w">
+
+  <div class="r d1 hide-m"><span class="mono">At a glance</span></div>
+
+  <div class="mg r d1">
+    <div class="mt"><a href="https://mdjonaidhossain.github.io/#publications" target="_blank" rel="noopener"><div class="num">6</div><div class="lab">published outputs, including a first-authored software release</div></a></div>
+    <div class="mt"><a href="https://mdjonaidhossain.github.io/#portfolio" target="_blank" rel="noopener"><div class="num">7</div><div class="lab">research institutes across six countries</div></a></div>
+    <div class="mt"><a href="https://mdjonaidhossain.github.io/#recognition" target="_blank" rel="noopener"><div class="num">10</div><div class="lab">competitive fellowships and scholarships</div></a></div>
+    <div class="mt"><a href="https://mdjonaidhossain.github.io/#recognition" target="_blank" rel="noopener"><div class="num">1st</div><div class="lab">prize, poster &amp; flash talk &mdash; INRAE BAP PhD &amp; Postdoc Days 2026</div></a></div>
+  </div>
+
+  <div class="r d2 hide-m"><span class="mono">The route</span></div>
+  <h2 class="r d2 hide-m">Seven institutes, one through-line</h2>
+  <p class="intro r d3 hide-m">Every stop asks a version of the same question: what limits the movement of carbon and nitrogen inside a plant, and which molecules set that limit. The systems changed; the question did not.</p>
+
+  <figure class="route r d3 hide-m" style="margin-inline:0">
+    <div class="route-scroll">
+      <svg viewBox="0 0 1000 200" role="img" aria-label="Seven research institutes across six countries, in order: SAU Bangladesh, UPV Spain, SLU Sweden, GWDG Germany, HHU Germany, MSU USA, IJPB France.">
+        <path class="rpath" d="M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104"/>
+        <path class="rflow" d="M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104"/>
+        <g class="rnode" tabindex="0" role="link" data-go="#path" aria-label="SAU, Bangladesh">
+          <circle cx="60" cy="118" r="7"/>
+          <text class="rname" x="60" y="146" text-anchor="start">SAU</text>
+          <text x="60" y="160" text-anchor="start">Bangladesh</text>
+          <text x="60" y="174" text-anchor="start">2019 &ndash; 21</text>
+        </g>
+        <g class="rnode" tabindex="0" role="link" data-go="#p-stipa" aria-label="UPV, Spain">
+          <circle cx="210" cy="96" r="7"/>
+          <text class="rname" x="210" y="50" text-anchor="middle">UPV</text>
+          <text x="210" y="64" text-anchor="middle">Spain</text>
+          <text x="210" y="78" text-anchor="middle">2021 &ndash; 22</text>
+        </g>
+        <g class="rnode" tabindex="0" role="link" data-go="#p-slu" aria-label="SLU, Sweden">
+          <circle cx="360" cy="112" r="7"/>
+          <text class="rname" x="360" y="140" text-anchor="middle">SLU</text>
+          <text x="360" y="154" text-anchor="middle">Sweden</text>
+          <text x="360" y="168" text-anchor="middle">2022</text>
+        </g>
+        <g class="rnode" tabindex="0" role="link" data-go="#p-gwdg" aria-label="GWDG, Germany">
+          <circle cx="510" cy="88" r="7"/>
+          <text class="rname" x="510" y="42" text-anchor="middle">GWDG</text>
+          <text x="510" y="56" text-anchor="middle">Germany</text>
+          <text x="510" y="70" text-anchor="middle">2022 &ndash; 23</text>
+        </g>
+        <g class="rnode" tabindex="0" role="link" data-go="#p-hhu" aria-label="HHU, Germany">
+          <circle cx="660" cy="108" r="7"/>
+          <text class="rname" x="660" y="136" text-anchor="middle">HHU</text>
+          <text x="660" y="150" text-anchor="middle">Germany</text>
+          <text x="660" y="164" text-anchor="middle">2023 &ndash; 24</text>
+        </g>
+        <g class="rnode" tabindex="0" role="link" data-go="#p-msu" aria-label="MSU, USA">
+          <circle cx="810" cy="84" r="7"/>
+          <text class="rname" x="810" y="38" text-anchor="middle">MSU</text>
+          <text x="810" y="52" text-anchor="middle">USA</text>
+          <text x="810" y="66" text-anchor="middle">2024 &ndash; 25</text>
+        </g>
+        <g class="rnode now" tabindex="0" role="link" data-go="#research" aria-label="IJPB, France">
+          <circle cx="940" cy="104" r="7"/>
+          <text class="rname" x="940" y="132" text-anchor="end">IJPB</text>
+          <text x="940" y="146" text-anchor="end">France</text>
+          <text x="940" y="160" text-anchor="end">2025 &ndash;</text>
+        </g>
+        <circle class="rsugar" r="4" style="offset-path:path('M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104')"/>
+        <circle class="rsugar" r="4" style="offset-path:path('M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104'); animation-delay:-3.7s"/>
+        <circle class="rsugar" r="4" style="offset-path:path('M60,118 C110,118 160,96 210,96 C260,96 310,112 360,112 C410,112 460,88 510,88 C560,88 610,108 660,108 C710,108 760,84 810,84 C860,84 890,104 940,104'); animation-delay:-7.4s"/>
+      </svg>
+    </div>
+    <figcaption class="rhint">Pick a stop to open that work</figcaption>
+  </figure>
+
+  <div class="cta r d4">
+    <a class="btn" href="https://mdjonaidhossain.github.io/" target="_blank" rel="noopener">Full research portfolio <span class="arr">&rarr;</span></a>
+    <a class="btn ghost" href="mailto:md-jonaid.hossain@inrae.fr">Get in touch</a>
+  </div>
+
+</div>
+<script>
+(function(){
+  var B='https://mdjonaidhossain.github.io/';
+  [].slice.call(document.querySelectorAll('.rnode')).forEach(function(n){
+    function go(){ window.open(B + (n.getAttribute('data-go')||''), '_blank', 'noopener'); }
+    n.addEventListener('click', go);
+    n.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+  });
+})();
+</script>
+</body>
+</html>
