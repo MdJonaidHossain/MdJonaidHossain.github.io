@@ -103,6 +103,17 @@ p{margin:0}
 }
 .nav-links a:hover{color:var(--ink)}
 .nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{
+  display:inline-flex; align-items:center; gap:7px; text-decoration:none; white-space:nowrap;
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--amber-ink); border:1px solid var(--amber); padding:6px 12px; border-radius:2px;
+  transition:background .3s ease, color .3s ease, transform .3s cubic-bezier(.2,.7,.3,1);
+}
+.nav-cta:hover{background:var(--amber); color:var(--paper); transform:translateY(-1px)}
+.nav-cta .arr{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.nav-cta:hover .arr{transform:translateX(3px)}
+@media (max-width:460px){ .nav-cta{padding:6px 9px} .nav-cta .lbl{display:none} .nav-cta::after{content:"Email"} }
+@media print{ .nav-cta{display:none} }
 .theme-btn{
   border:1px solid var(--rule-strong); background:transparent; color:var(--ink-2);
   font-family:var(--f-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
@@ -469,6 +480,13 @@ section{padding-block:76px; border-bottom:1px solid var(--rule)}
 .pub .authors b{font-weight:600; color:var(--ink)}
 .pub .venue{font-size:13.5px; color:var(--ink-3)}
 .pub .venue i{font-style:italic; color:var(--ink-2)}
+.pubgroup{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-3); padding:24px 0 2px; border-top:1px solid var(--rule); margin-top:6px}
+.pubs > .pubgroup:first-child{border-top:0; padding-top:0; margin-top:0}
+.pubgroup + .pub{border-top:0; padding-top:12px}
+.badge-sw{display:inline-block; font-family:var(--f-mono); font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--paper); background:var(--teal); padding:3px 7px;
+  border-radius:2px; margin-left:8px; vertical-align:2px}
 .pub a.doi{
   font-family:var(--f-mono); font-size:11.5px; letter-spacing:.05em; color:var(--amber);
   text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s;
@@ -636,6 +654,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
       <a href="#path">Path</a>
       <a href="#contact">Contact</a>
     </div>
+    <a class="nav-cta" href="mailto:md-jonaid.hossain@inrae.fr"><span class="lbl">Get in touch</span> <span class="arr">&rarr;</span></a>
     <button class="theme-btn" id="themeToggle" aria-label="Switch colour theme">Theme</button>
   </div>
 </nav>
@@ -645,7 +664,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
     <div>
       <div class="eyebrow rise d1">
         <span class="dot pulse"></span>
-        <span class="mono">PhD researcher &middot; IJPB, INRAE Versailles &middot; Universit&eacute; Paris-Saclay</span>
+        <span class="mono">PhD candidate &middot; IJPB, INRAE Versailles &middot; Universit&eacute; Paris-Saclay</span>
       </div>
       <h1 class="rise d2">Jonaid</h1>
       <div class="fullname rise d2">Md Jonaid Hossain &middot; publishes as Hossain, M.&nbsp;J.</div>
@@ -673,7 +692,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
 
 <div class="metrics">
   <div class="wrap metrics-grid">
-    <div class="metric"><a href="#publications"><div class="num">5</div><div class="lab">peer-reviewed publications, incl. <i>Molecular Ecology</i> and <i>JXB</i></div></a></div>
+    <div class="metric"><a href="#publications"><div class="num">6</div><div class="lab">published outputs, including a first-authored software release</div></a></div>
     <div class="metric"><a href="#portfolio"><div class="num">7</div><div class="lab">research institutes across six countries</div></a></div>
     <div class="metric"><a href="#recognition"><div class="num">10</div><div class="lab">competitive fellowships and scholarships awarded</div></a></div>
     <div class="metric"><a href="#recognition"><div class="num">1st</div><div class="lab">prize, poster &amp; flash talk &mdash; INRAE BAP PhD &amp; Postdoc Days 2026</div></a></div>
@@ -685,13 +704,13 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
     <div class="now reveal">
       <div class="rail"><span class="mono">Current work</span></div>
       <div class="now-body">
-        <h3>Sugar transport, transporters and CO<sub>2</sub> acclimation in plants</h3>
+        <h3>Sugar transporters and CO<sub>2</sub> acclimation in plants</h3>
         <div class="where">2025 &ndash; present &middot; Institut Jean-Pierre Bourgin (IJPB), INRAE &middot; with Dr Rozenn Le Hir</div>
         <p class="lede" style="margin-bottom:0">Rising atmospheric CO<sub>2</sub> hands a plant more carbon than its metabolism is built to spend. My PhD asks where that surplus goes &mdash; and what breaks when the plant can no longer park it. The answer runs through the vacuole, and through the tonoplast SWEET transporters that fill and drain it.</p>
 
         <dl class="qa reveal stagger">
           <div><dt>Question</dt><dd>Do vacuolar SWEET transporters (SWEET2, SWEET16, SWEET17) act as the buffer that prevents carbon overflow under elevated CO<sub>2</sub>, and what happens to growth and metabolism when that buffer is removed?</dd></div>
-          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with RNA-seq, GC&ndash;MS and LC&ndash;MS metabolomics, RT-qPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
+          <div><dt>Approach</dt><dd><i>Arabidopsis thaliana</i> mutant lines under controlled elevated CO<sub>2</sub>, read out with RNA-seq, GC&ndash;MS and LC&ndash;MS/MS metabolomics, RT-qPCR, LI-6800F gas exchange and stable-isotope physiology &mdash; plus AlphaFold3 structures, docking and GROMACS simulation to ask how the transporters themselves behave.</dd></div>
           <div><dt>Why it matters</dt><dd>Carbon allocation is the step between photosynthesis and yield. Knowing which transporters set that allocation, and where it saturates, is what makes it a breeding and engineering target rather than a description.</dd></div>
         </dl>
 
@@ -958,7 +977,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
       <div class="rail"><span class="mono">Capabilities</span></div>
       <div>
         <h2>What I can run, end to end</h2>
-        <p class="intro">From construct design and plant transformation through to metabolite quantification, and from raw reads on a cluster to a docked structure. The wet-lab half and the computational half are both mine, which is usually where projects lose time.</p>
+        <p class="intro">From construct design and plant transformation through to metabolite quantification, and from raw reads on a cluster to a docked structure. The wet-lab half and the computational half are both mine, which is usually where projects lose time. When the tool I need does not exist, I write it &mdash; <a href="https://doi.org/10.5281/zenodo.23023784" target="_blank" rel="noopener" style="color:var(--amber-ink); text-decoration:none; border-bottom:1px solid var(--rule-strong)">MetaNova</a>, my untargeted-metabolomics pipeline, is released and citable.</p>
       </div>
     </div>
     <div class="exp reveal stagger">
@@ -973,14 +992,14 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
         <h3>Omics &amp; analytical chemistry</h3>
         <p class="sub">Quantitative read-outs &mdash; transcript, metabolite and whole-plant gas flux.</p>
         <div class="chips">
-          <span class="chip">RNA-seq</span><span class="chip">scRNA / snRNA-seq</span><span class="chip">Whole-genome sequencing</span><span class="chip">Whole-plasmid sequencing</span><span class="chip">LC&ndash;MS metabolomics</span><span class="chip">GC&ndash;MS metabolomics</span><span class="chip">Tandem MS</span><span class="chip">HPLC</span><span class="chip">UV-Vis spectrophotometry</span><span class="chip">Flame photometry</span><span class="chip">Gas exchange (LI-6800F)</span><span class="chip">Stable-isotope physiology</span><span class="chip">MZmine</span><span class="chip">MetGem</span><span class="chip">Sirius</span>
+          <span class="chip">RNA-seq</span><span class="chip">scRNA / snRNA-seq</span><span class="chip">Whole-genome sequencing</span><span class="chip">Whole-plasmid sequencing</span><span class="chip">LC&ndash;MS/MS metabolomics</span><span class="chip">GC&ndash;MS metabolomics</span><span class="chip">HPLC</span><span class="chip">UV-Vis spectrophotometry</span><span class="chip">Flame photometry</span><span class="chip">Gas exchange (LI-6800F)</span><span class="chip">Stable-isotope physiology</span><span class="chip">MZmine</span><span class="chip">MetGem</span><span class="chip">Sirius</span>
         </div>
       </div>
       <div class="exp-col">
         <h3>Computational &amp; structural</h3>
         <p class="sub">Cluster-scale analysis, statistical genetics and molecular simulation.</p>
         <div class="chips">
-          <span class="chip">Python</span><span class="chip">R</span><span class="chip">Bash / Linux</span><span class="chip">SLURM &amp; PBS on HPC</span><span class="chip">GWAS</span><span class="chip">GEMMA mixed models</span><span class="chip">AlphaFold3</span><span class="chip">OpenFold3</span><span class="chip">Boltz</span><span class="chip">AutoDock Vina</span><span class="chip">SMINA / GNINA</span><span class="chip">DiffDock</span><span class="chip">GROMACS</span><span class="chip">ChimeraX</span><span class="chip">PyMOL</span><span class="chip">VMD</span><span class="chip">Fiji / ImageJ</span><span class="chip">CellProfiler</span><span class="chip">Ilastik</span><span class="chip">OMERO</span><span class="chip">MEGA</span><span class="chip">SnapGene</span><span class="chip">Benchling</span><span class="chip">Geneious</span>
+          <span class="chip">Python</span><span class="chip">R</span><span class="chip">Bash / Linux</span><span class="chip">SLURM &amp; PBS on HPC</span><span class="chip">GWAS</span><span class="chip">GEMMA mixed models</span><span class="chip">MetaNova</span><span class="chip">AlphaFold3</span><span class="chip">OpenFold3</span><span class="chip">Boltz</span><span class="chip">AutoDock Vina</span><span class="chip">SMINA / GNINA</span><span class="chip">DiffDock</span><span class="chip">GROMACS</span><span class="chip">ChimeraX</span><span class="chip">PyMOL</span><span class="chip">VMD</span><span class="chip">Fiji / ImageJ</span><span class="chip">CellProfiler</span><span class="chip">Ilastik</span><span class="chip">OMERO</span><span class="chip">MEGA</span><span class="chip">SnapGene</span><span class="chip">Benchling</span><span class="chip">Geneious</span>
         </div>
       </div>
     </div>
@@ -992,11 +1011,12 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
     <div class="sec-head reveal">
       <div class="rail"><span class="mono">Publications</span></div>
       <div>
-        <h2>Peer-reviewed work</h2>
-        <p class="intro">Five publications across plant molecular physiology, evolutionary ecology and plant pathology.</p>
+        <h2>Published work</h2>
+        <p class="intro">Four journal articles, a book chapter, and a released, citable software tool I wrote to do my own metabolomics.</p>
       </div>
     </div>
     <div class="pubs reveal stagger">
+      <div class="pubgroup">Journal articles</div>
       <article class="pub">
         <div class="n">2026</div>
         <div>
@@ -1010,15 +1030,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
         <div>
           <h3>Unlocking sugar subcellular dynamics: the crucial function and regulation of tonoplast sugar transporters in plant response to climate change</h3>
           <p class="authors">Keller, I., <b>Hossain, M.&nbsp;J.</b>, Bourgeois, S., Thouzellier, J., Dieuaide-Noubhani, M., &amp; Le Hir, R.</p>
-          <p class="venue"><i>Journal of Experimental Botany</i>, 77(6), 1531&ndash;1549. &nbsp;<a class="doi" href="https://doi.org/10.1093/jxb/eraf525">10.1093/jxb/eraf525</a></p>
-        </div>
-      </article>
-      <article class="pub">
-        <div class="n">2023</div>
-        <div>
-          <h3>Soil health management and microorganisms: recent developments</h3>
-          <p class="authors">Manda, R.&nbsp;R., Addanki, V.&nbsp;A., Giabardo, A., Benjamin, J., <b>Hossain, M.&nbsp;J.</b>, Khanna, S., Gaddam, M., Kumar, R., &amp; Srivastava, S.</p>
-          <p class="venue">In <i>Detection, Diagnosis and Management of Soil-borne Phytopathogens</i>, Chapter 18. Springer. &nbsp;<a class="doi" href="https://doi.org/10.1007/978-981-19-8307-8_18">10.1007/978-981-19-8307-8_18</a></p>
+          <p class="venue">Review &middot; <i>Journal of Experimental Botany</i>, 77(6), 1531&ndash;1549. &nbsp;<a class="doi" href="https://doi.org/10.1093/jxb/eraf525">10.1093/jxb/eraf525</a></p>
         </div>
       </article>
       <article class="pub">
@@ -1035,6 +1047,24 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <h3>Effect of different planting time on tomato yellow leaf curl virus (TYLCV) of tomato and its impact on yield in Bangladesh</h3>
           <p class="authors">Anik, A.&nbsp;H., Begum, F., Aminuzzaman, F.&nbsp;M., <b>Hossain, M.&nbsp;J.</b>, Chakma, N., &amp; Shahin, S.&nbsp;M.&nbsp;N.&nbsp;S.</p>
           <p class="venue"><i>International Journal of Environment, Agriculture and Biotechnology</i>, 5(4), 907&ndash;915. &nbsp;<a class="doi" href="https://doi.org/10.22161/ijeab.54.10">10.22161/ijeab.54.10</a></p>
+        </div>
+      </article>
+      <div class="pubgroup">Book chapter</div>
+      <article class="pub">
+        <div class="n">2023</div>
+        <div>
+          <h3>Soil health management and microorganisms: recent developments</h3>
+          <p class="authors">Manda, R.&nbsp;R., Addanki, V.&nbsp;A., Giabardo, A., Benjamin, J., <b>Hossain, M.&nbsp;J.</b>, Khanna, S., Gaddam, M., Kumar, R., &amp; Srivastava, S.</p>
+          <p class="venue">In <i>Detection, Diagnosis and Management of Soil-borne Phytopathogens</i>, Chapter 18. Springer. &nbsp;<a class="doi" href="https://doi.org/10.1007/978-981-19-8307-8_18">10.1007/978-981-19-8307-8_18</a></p>
+        </div>
+      </article>
+      <div class="pubgroup">Software</div>
+      <article class="pub">
+        <div class="n">2026</div>
+        <div>
+          <h3>MetaNova &mdash; end-to-end untargeted metabolomics: annotation, normalization and statistical analysis<span class="badge-sw">First author</span></h3>
+          <p class="authors"><b>Hossain, M.&nbsp;J.</b>, Totozafy, J.&nbsp;C., &amp; Le Hir, R.</p>
+          <p class="venue">Desktop application, v1.0.0 &middot; Zenodo. &nbsp;<a class="doi" href="https://doi.org/10.5281/zenodo.23023784">10.5281/zenodo.23023784</a></p>
         </div>
       </article>
     </div>
@@ -1054,6 +1084,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
       <div>
         <h3 class="block">Awards, honours &amp; fellowships</h3>
         <div class="rows">
+          <div class="row hl"><span class="yr">2026</span><span class="t"><strong>1st Prize &mdash; Poster &amp; Flash Talk</strong><small>INRAE BAP Division PhD &amp; Postdoc Days, Versailles, France</small></span></div>
           <div class="row"><span class="yr">2025&ndash;28</span><span class="t"><strong>Doctoral Contract</strong> &mdash; fully funded PhD<small>Universit&eacute; Paris-Saclay, France</small></span></div>
           <div class="row"><span class="yr">2025</span><span class="t">Rodman Botany Scholarship<small>Michigan State University, USA &middot; $2.1K</small></span></div>
           <div class="row"><span class="yr">2025</span><span class="t">Summer Supplemental Fellowship<small>Michigan State University, USA &middot; $0.4K</small></span></div>
@@ -1073,6 +1104,12 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <div class="row hl"><span class="yr">2026</span><span class="t"><strong>Poster &mdash; 1st prize (poster &amp; flash talk)</strong> &middot; Vacuolar SWEET Transporters Prevent Carbon Overflow Under Elevated CO<sub>2</sub><small>INRAE BAP Division PhD &amp; Postdoc Days, Versailles &middot; May</small></span></div>
           <div class="row"><span class="yr">2025</span><span class="t">Poster &mdash; Regulation of nitrogen partitioning to improve crop yield in low-input agriculture: role of amino acid permeases<small>PlantACT! Conference, Madrid, Spain &middot; April</small></span></div>
           <div class="row"><span class="yr">2023</span><span class="t">Poster &mdash; Identification of key AAP permeases in tomato regulating amino acid partitioning in response to nitrogen<small>Iberian Plant Biology, Braga, Portugal &middot; July</small></span></div>
+        </div>
+
+        <h3 class="block" style="margin-top:34px">Conferences attended</h3>
+        <div class="rows">
+          <div class="row"><span class="yr">2026</span><span class="t">International Saclay Plant Sciences (SPS) Symposium<small>IJPB, INRAE Versailles, France &middot; October</small></span></div>
+          <div class="row"><span class="yr">2026</span><span class="t">IJPB Symposium &mdash; Chemical Interactions between Plants and their Environment: From the Molecule to the Field<small>INRAE Versailles, France &middot; September</small></span></div>
         </div>
 
         <h3 class="block" style="margin-top:34px">Organising, service &amp; teaching</h3>
@@ -1102,15 +1139,14 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
     <div class="tl reveal stagger">
       <div class="tl-yr">2025 &ndash; present</div>
       <div class="tl-it mark">
-        <h4>PhD, Plant Science</h4>
-        <div class="org">Universit&eacute; Paris-Saclay &middot; Doctoral School SEVE (Sciences du V&eacute;g&eacute;tal, Ecology, Evolution), France</div>
+        <h4>PhD, Plant Science <span style="font-weight:400;color:var(--ink-3)">&middot; expected 2028</span></h4>
+        <div class="org">Universit&eacute; Paris-Saclay &middot; Doctoral School SEVE (Plant Science: from Genes to the Ecosystem), France</div>
         <div class="proj">Hosted at IJPB, INRAE Versailles</div>
       </div>
       <div class="tl-yr">2024 &ndash; 2025</div>
       <div class="tl-it">
-        <h4>PhD Graduate Student, Molecular Plant Science &amp; Plant Biology</h4>
+        <h4>Graduate Studies, PhD Programme in Molecular Plant Science &amp; Plant Biology</h4>
         <div class="org">Michigan State University, USA</div>
-        <div class="proj">Withdrawn to take up the funded doctorate at Paris-Saclay</div>
       </div>
       <div class="tl-yr">2021 &ndash; 2024</div>
       <div class="tl-it mark">
@@ -1207,7 +1243,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
           <div class="crow"><span class="mono">Languages</span><span>Bengali (native) &middot; English (full professional) &middot; French (learning)</span></div>
           <div class="crow"><span class="mono">ORCID</span><span><a href="https://orcid.org/0000-0001-6259-3612" target="_blank" rel="noopener">0000-0001-6259-3612</a></span></div>
           <div class="crow"><span class="mono">LinkedIn</span><span><a href="https://www.linkedin.com/in/drjonaid/" target="_blank" rel="noopener">linkedin.com/in/drjonaid</a></span></div>
-          <div class="crow"><span class="mono">Societies</span><span>SFBV &middot; ASPB &middot; EMA-AISBL</span></div>
+          <div class="crow"><span class="mono">Societies</span><span>SFBV &middot; ASPB</span></div>
           <div class="crow"><span class="mono">References</span><span>Available on request</span></div>
         </div>
         <div style="margin-top:22px">
@@ -1218,7 +1254,7 @@ html.theme-anim, html.theme-anim *{transition:background-color .45s ease, color 
     </div>
     <footer class="wrap" style="padding-inline:0">
       <span>&copy; 2026 Md Jonaid Hossain</span>
-      <span class="mono">Versailles &middot; France &middot; updated September 2026</span>
+      <span class="mono">Versailles &middot; France &middot; updated November 2026</span>
     </footer>
   </div>
 </section>
