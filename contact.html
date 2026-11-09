@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact - Jonaid</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Spectral:ital,wght@0,600&display=swap">
+<style>
+:root{--bg:#080F13;--ink:#E9EFF1;--ink2:#93A6AE;--ink3:#6B7F88;--rule:#1B272D;
+  --rule2:#2C3D45;--amb:#D79A55;--ambi:#E4B274;--tl:#5CA8A0;--srf:#0D161B}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.62}
+.w{max-width:1000px;margin:0 auto;padding:54px 22px 48px}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.r{animation:rise .9s cubic-bezier(.16,.84,.34,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3)}
+h1{font-family:Spectral,Georgia,serif;font-weight:600;font-size:clamp(25px,3.6vw,34px);
+  letter-spacing:-.018em;line-height:1.14;margin:6px 0 12px}
+p{color:var(--ink2);font-size:16px;max-width:56ch;margin:0 0 20px}
+p b{color:var(--ink);font-weight:500}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:26px}
+.cell{background:var(--srf);padding:22px 22px 20px}
+h2{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink3);margin:0 0 14px;font-weight:400}
+.mail{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;
+  font-size:12px;letter-spacing:.06em;text-decoration:none;padding:12px 18px;
+  border:1px solid var(--amb);color:#080F13;background:var(--amb);border-radius:2px;
+  transition:background .3s ease,transform .3s ease;max-width:100%}
+.mail:hover{background:var(--ambi);transform:translateY(-2px)}
+.mail .arr{transition:transform .3s cubic-bezier(.16,.84,.34,1)}
+.mail:hover .arr{transform:translateX(4px)}
+.alt{margin-top:13px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink3);
+  line-height:1.8}
+.alt a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule2)}
+.alt a:hover{color:var(--ambi);border-color:var(--amb)}
+
+.links{display:grid;gap:8px}
+.lk{display:flex;align-items:baseline;gap:12px;text-decoration:none;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em;
+  color:var(--ink2);border:1px solid var(--rule2);border-radius:2px;padding:9px 12px;
+  transition:border-color .3s ease,color .3s ease,transform .3s ease}
+.lk:hover{border-color:var(--amb);color:var(--ink);transform:translateX(3px)}
+.lk .k{color:var(--amb);min-width:64px}
+
+.foot{margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);line-height:1.9}
+
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+@media(max-width:560px){
+  html,body{line-height:1.4}
+  .w{padding:10px 11px 9px}
+  .hide-m{display:none}
+  h1{font-size:15px;margin:0 0 4px}
+  .grid{margin-top:7px;grid-template-columns:1fr 1fr}
+  .cell{padding:8px 9px 8px}
+  h2{font-size:7.5px;margin:0 0 6px;letter-spacing:.1em}
+  .mail{font-size:8.5px;padding:6px 9px;gap:5px}
+  .alt{margin-top:6px;font-size:8px;line-height:1.6}
+  .links{gap:4px}
+  .lk{font-size:8px;padding:4px 6px;gap:6px}
+  .lk .k{min-width:40px}
+  .foot{display:none}
+  .lk{font-size:7.5px;padding:3px 6px}
+}
+@media(prefers-reduced-motion:reduce){.r{animation:none}.mail:hover,.lk:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="w">
+
+  <div class="r d1 hide-m"><span class="mono">Contact</span></div>
+  <h1 class="r d1">Get in touch</h1>
+  <p class="r d2 hide-m">I am at <b>IJPB, INRAE Versailles</b> until 2028, and I answer email. Write about sugar transport and carbon allocation, about metabolomics pipelines, about collaborations &mdash; or about what it takes to move a research career across six countries.</p>
+
+  <div class="grid r d3">
+    <div class="cell">
+      <h2>Email</h2>
+      <a class="mail" href="mailto:md-jonaid.hossain@inrae.fr">md-jonaid.hossain@inrae.fr <span class="arr">&rarr;</span></a>
+      <div class="alt hide-m">
+        Institut Jean-Pierre Bourgin (IJPB)<br>
+        INRAE Centre de Versailles-Saclay<br>
+        Route de Saint-Cyr, 78000 Versailles, France
+      </div>
+    </div>
+    <div class="cell">
+      <h2>Elsewhere</h2>
+      <div class="links">
+        <a class="lk" href="https://orcid.org/0000-0001-6259-3612" target="_blank" rel="noopener"><span class="k">ORCID</span><span>0000-0001-6259-3612</span></a>
+        <a class="lk" href="https://www.linkedin.com/in/drjonaid/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span>/in/drjonaid</span></a>
+        <a class="lk" href="https://github.com/MdJonaidHossain" target="_blank" rel="noopener"><span class="k">GitHub</span><span>MdJonaidHossain</span></a>
+        <a class="lk" href="https://x.com/DrJonaid" target="_blank" rel="noopener"><span class="k">X</span><span>@DrJonaid</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot r d3">
+    Languages &middot; Bengali (native) &middot; English (full professional) &middot; French (learning)<br class="hide-m">
+    <span class="hide-m">Based in Saint-Quentin-en-Yvelines, &Icirc;le-de-France</span>
+  </div>
+
+</div>
+</body>
+</html>
