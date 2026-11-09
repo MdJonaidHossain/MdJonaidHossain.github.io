@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sugar transporters and CO2 acclimation - current work</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Spectral:ital,wght@0,600;1,400&display=swap">
+<style>
+:root{--bg:#080F13;--ink:#E9EFF1;--ink2:#93A6AE;--ink3:#6B7F88;--rule:#1B272D;--rule2:#2C3D45;
+  --amb:#D79A55;--ambi:#E4B274;--tl:#5CA8A0;--grn:#5A8C6A;--red:#C9705A;--srf:#0D161B}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+.w{max-width:1000px;margin:0 auto;padding:30px 22px 26px}
+@keyframes r{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.r{animation:r .9s cubic-bezier(.16,.84,.34,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}
+.d4{animation-delay:.44s}.d5{animation-delay:.57s}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3)}
+.bd{border-left:2px solid var(--amb);padding-left:24px;margin-top:10px}
+h2{font-family:Spectral,Georgia,serif;font-weight:600;font-size:clamp(22px,3.1vw,29px);
+  letter-spacing:-.015em;line-height:1.2;margin:4px 0 5px}
+h3{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amb);margin:30px 0 12px;font-weight:500}
+.wh{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+p{margin:0 0 14px;color:var(--ink2);max-width:68ch}
+p b{color:var(--ink);font-weight:500}
+.qa{display:grid;gap:15px;margin:4px 0 0}
+.q{display:grid;grid-template-columns:30px minmax(0,1fr);gap:16px;align-items:start}
+.q .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amb);padding-top:4px}
+.q .t{margin:0;color:var(--ink2);max-width:64ch;font-size:15px}
+.q .t b{color:var(--ink);font-weight:500}
+
+figure{margin:22px 0 0;padding:20px 16px 12px;background:var(--srf);
+  border:1px solid var(--rule);border-radius:2px}
+svg{display:block;width:100%;height:auto}
+figcaption{margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  letter-spacing:.04em;color:var(--ink3);line-height:1.55}
+figcaption b{color:var(--amb);font-weight:500}
+
+/* ---- state switch ---- */
+.sw{display:flex;margin:0 0 16px;border:1px solid var(--rule2);border-radius:2px;
+  width:max-content;max-width:100%;overflow:hidden;flex-wrap:wrap}
+.sw button{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;padding:7px 13px;border:0;background:transparent;color:var(--ink3);
+  cursor:pointer;transition:background .35s ease,color .35s ease}
+.sw button+button{border-left:1px solid var(--rule2)}
+.sw button:hover{color:var(--ink)}
+.sw button[aria-pressed="true"]{background:var(--amb);color:var(--bg)}
+
+/* ---- figure 1 ---- */
+.cell{fill:#0B1418;stroke:var(--rule2);stroke-width:1.4}
+.chl{fill:#14241C;stroke:var(--grn);stroke-width:1.4}
+.thyl{fill:none;stroke:var(--grn);stroke-width:1.1;opacity:.65}
+.vac{fill:#0E1D1C;stroke:var(--tl);stroke-width:1.4}
+.vfill{fill:var(--amb);opacity:.20;transform-box:fill-box;transform-origin:bottom;
+  transform:scaleY(var(--fill,.18));
+  transition:transform 1.5s cubic-bezier(.2,.7,.3,1),opacity .9s ease}
+.gate{fill:var(--tl);transform-box:fill-box;transform-origin:center;
+  animation:gate calc(var(--flow,5.4s)/2) ease-in-out infinite}
+.gate.g2{animation-delay:calc(var(--flow,5.4s)/-4)}
+.gate.g3{animation-delay:calc(var(--flow,5.4s)/-3)}
+@keyframes gate{0%,100%{opacity:.35;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.5)}}
+.chan{fill:none;stroke:#223038;stroke-width:15;stroke-linecap:round}
+.chi{fill:none;stroke:var(--srf);stroke-width:10;stroke-linecap:round}
+.org{fill:#16222A;stroke:var(--rule2);stroke-width:1.4}
+.sl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;fill:var(--ink3)}
+.sl.hi{fill:var(--tl)}
+.sl.vl{fill:#CBA87C}
+.guide{fill:none;stroke:#1E2B32;stroke-width:1.4;stroke-dasharray:3 6}
+.guide.gt{stroke:#1D3330}
+.arw{fill:none;stroke:var(--ink3);stroke-width:1.2}
+.sg{fill:var(--amb);animation:fl var(--flow,5.4s) linear infinite}
+.sg.b{fill:var(--tl);animation-duration:calc(var(--flow,5.4s)*1.2)}
+.sg.extra{opacity:0;transition:opacity .9s ease}
+@keyframes fl{from{offset-distance:0%}to{offset-distance:100%}}
+.pA{offset-path:path("M 120 116 C 160 134 196 148 230 160")}
+.pB{offset-path:path("M 138 102 C 220 120 300 140 396 178 L 636 180")}
+.pC{offset-path:path("M 288 160 C 330 152 360 162 396 175 L 636 180")}
+.of{opacity:0;transition:opacity .8s ease}
+.of ellipse{fill:var(--red);opacity:.16}
+.of text{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.11em;fill:var(--red)}
+#fig1[data-state="elev"]{--flow:2.6s;--fill:.85}
+#fig1[data-state="elev"] .sg.extra{opacity:1}
+#fig1[data-state="elev"] .vfill{opacity:.34}
+#fig1[data-state="mut"]{--flow:2.6s;--fill:.04}
+#fig1[data-state="mut"] .sg.extra{opacity:1}
+#fig1[data-state="mut"] .sg.b{opacity:0}
+#fig1[data-state="mut"] .gate{opacity:.12;animation:none}
+#fig1[data-state="mut"] .of{opacity:1}
+
+/* ---- figure 2: design, in HTML ---- */
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin-top:2px}
+.col{background:var(--srf);padding:14px 14px 15px}
+.col h4{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);margin:0 0 11px;font-weight:400}
+.chip{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;
+  color:var(--ink2);border:1px solid var(--rule2);border-radius:2px;padding:5px 9px;
+  margin-bottom:6px;transition:border-color .3s ease,color .3s ease}
+.chip:hover{border-color:var(--amb);color:var(--ink)}
+.chip.wt{border-color:var(--tl);color:var(--tl)}
+.chip.co2{border-color:var(--amb);color:var(--ambi)}
+.chip i{font-style:italic}
+.insil{background:var(--srf);border:1px solid var(--rule);border-top:0;
+  padding:12px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.insil .lb{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);margin-right:4px}
+.insil .st{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink2);
+  border:1px solid var(--rule2);border-radius:2px;padding:5px 9px}
+.insil .ar{color:var(--amb);font-size:12px}
+
+.foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  padding:12px 20px;border:1px solid var(--amb);color:#080F13;background:var(--amb);
+  border-radius:2px;transition:background .3s ease,transform .3s ease}
+.btn:hover{background:var(--ambi);transform:translateY(-2px)}
+.btn .arr{transition:transform .3s cubic-bezier(.16,.84,.34,1)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn.ghost{background:transparent;color:var(--ink2);border-color:var(--rule2)}
+.btn.ghost:hover{background:#101C22;color:var(--ink);border-color:var(--amb)}
+
+@media(max-width:820px){
+  .flow{grid-template-columns:1fr 1fr}
+  .col:last-child{grid-column:1 / -1}
+}
+@media(max-width:600px){
+  .q{grid-template-columns:1fr;gap:2px}
+  .bd{padding-left:16px}
+  .flow{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  html,body{line-height:1.45}
+  .qh{font-size:8px;letter-spacing:.1em;margin:9px 0 5px}
+  .qa{gap:6px}
+  .q{grid-template-columns:22px minmax(0,1fr);gap:7px}
+  .q .n{font-size:8px;padding-top:2px}
+  .q .t{font-size:9.5px;line-height:1.4}
+  .w{padding:9px 11px 7px}
+  .hide-m{display:none}
+  .bd{padding-left:10px;margin-top:0}
+  h2{font-size:14.5px;line-height:1.16;margin:0 0 4px}
+  figure{margin:6px 0 0;padding:7px 7px 5px}
+  .sw{margin-bottom:7px}
+  .sw button{font-size:7.5px;padding:3px 5px;letter-spacing:.05em}
+  figcaption{margin-top:5px;font-size:8.5px;line-height:1.35;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .foot{margin-top:8px;gap:6px}
+  .btn{font-size:8px;padding:6px 10px;letter-spacing:.06em}
+}
+@media(prefers-reduced-motion:reduce){.r{animation:none}.sg,.gate{animation:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="w">
+
+  <div class="r d1 hide-m"><span class="mono">Current work &middot; doctoral research</span></div>
+  <div class="bd">
+    <h2 class="r d1">Sugar transporters and CO<sub>2</sub> acclimation in plants</h2>
+    <div class="wh r d1 hide-m">2025 &ndash; present &middot; Institut Jean-Pierre Bourgin (IJPB), INRAE Versailles &middot; Universit&eacute; Paris-Saclay &middot; with Dr Rozenn Le Hir</div>
+
+    <p class="r d2 hide-m">Rising atmospheric CO<sub>2</sub> hands a plant more carbon than its metabolism is built to spend. Photosynthesis speeds up; growth does not follow at the same rate. The surplus has to go somewhere, and in a leaf cell the place it goes is the <b>vacuole</b> &mdash; the large central store whose membrane, the tonoplast, is studded with <b>SWEET2, SWEET16 and SWEET17</b>, the transporters that fill it and drain it again.</p>
+    <p class="r d2 hide-m">My thesis treats those three transporters as a <b>buffer</b>: the thing that decides whether extra carbon is parked and released on demand, or left to pile up in the cytosol where it feeds back and shuts photosynthesis down. Remove the buffer, and acclimation to elevated CO<sub>2</sub> should break in a measurable way.</p>
+
+    <figure class="r d3" id="fig1" data-state="amb">
+      <div class="sw" role="group" aria-label="Scenario">
+        <button type="button" data-set="amb" aria-pressed="true">Ambient CO<sub>2</sub></button>
+        <button type="button" data-set="elev" aria-pressed="false">Elevated CO<sub>2</sub></button>
+        <button type="button" data-set="mut" aria-pressed="false">Elevated, <i>sweet</i> mutant</button>
+      </div>
+      <svg viewBox="0 0 760 300" role="img" aria-label="A mesophyll cell: CO2 fixed in the chloroplast becomes sucrose, which is either stored in the vacuole through tonoplast SWEET transporters or exported through the phloem to the sink. Under elevated CO2 the vacuole fills; without the SWEET transporters carbon accumulates in the cytosol instead.">
+        <defs><clipPath id="vc"><rect x="150" y="166" width="180" height="80" rx="18"/></clipPath></defs>
+
+        <text class="sl" x="36" y="34">MESOPHYLL CELL</text>
+        <rect class="cell" x="36" y="46" width="360" height="214" rx="26"/>
+
+        <path class="arw" d="M 2 76 L 30 84"/>
+        <path class="arw" d="M 23 77 L 31 84 L 22 88" stroke-linejoin="round" fill="none"/>
+        <text class="sl" x="2" y="66">CO₂</text>
+
+        <path class="guide" d="M 138 102 C 220 120 300 140 396 178 L 636 180"/>
+        <path class="guide" d="M 120 116 C 160 134 196 148 230 160"/>
+        <path class="guide gt" d="M 288 160 C 330 152 360 162 396 175"/>
+
+        <ellipse class="chl" cx="96" cy="96" rx="46" ry="26"/>
+        <path class="thyl" d="M 66 89 H 126"/>
+        <path class="thyl" d="M 62 99 H 130"/>
+        <path class="thyl" d="M 70 109 H 122"/>
+        <text class="sl" x="96" y="134" text-anchor="middle">CHLOROPLAST</text>
+        <text class="sl" x="198" y="118">SUCROSE</text>
+
+        <g class="of">
+          <ellipse cx="300" cy="86" rx="74" ry="24"/>
+          <text x="300" y="89" text-anchor="middle">CARBON OVERFLOW</text>
+        </g>
+
+        <rect class="vac" x="150" y="166" width="180" height="80" rx="18"/>
+        <g clip-path="url(#vc)"><rect class="vfill" x="150" y="166" width="180" height="80"/></g>
+        <rect class="gate" x="188" y="160" width="4" height="14" rx="2"/>
+        <rect class="gate g2" x="238" y="160" width="4" height="14" rx="2"/>
+        <rect class="gate g3" x="288" y="160" width="4" height="14" rx="2"/>
+        <text class="sl hi" x="150" y="150">SWEET2 / 16 / 17 · TONOPLAST</text>
+        <text class="sl vl" x="240" y="238" text-anchor="middle">VACUOLE</text>
+
+        <path class="chan" d="M 396 180 L 636 180"/>
+        <path class="chi" d="M 396 180 L 636 180"/>
+        <text class="sl" x="404" y="208">PHLOEM</text>
+
+        <circle class="org" cx="668" cy="180" r="28"/>
+        <text class="sl" x="668" y="226" text-anchor="middle">SINK</text>
+        <text class="sl" x="668" y="240" text-anchor="middle">GROWTH, SEED</text>
+
+        <circle class="sg pA" r="3.6"/>
+        <circle class="sg pA" r="3.6" style="animation-delay:-1.8s"/>
+        <circle class="sg extra pA" r="3.6" style="animation-delay:-0.9s"/>
+        <circle class="sg pB" r="3.6"/>
+        <circle class="sg pB" r="3.6" style="animation-delay:-1.35s"/>
+        <circle class="sg pB" r="3.6" style="animation-delay:-2.7s"/>
+        <circle class="sg pB" r="3.6" style="animation-delay:-4.05s"/>
+        <circle class="sg extra pB" r="3.6" style="animation-delay:-0.65s"/>
+        <circle class="sg extra pB" r="3.6" style="animation-delay:-2s"/>
+        <circle class="sg extra pB" r="3.6" style="animation-delay:-3.4s"/>
+        <circle class="sg b pC" r="3.2"/>
+        <circle class="sg b pC" r="3.2" style="animation-delay:-3.1s"/>
+      </svg>
+      <figcaption><span class="state"></span></figcaption>
+    </figure>
+
+    <h3 class="r d4 hide-m">How the question is tested</h3>
+    <div class="r d4 hide-m">
+      <div class="flow">
+        <div class="col">
+          <h4>Genotypes</h4>
+          <span class="chip wt">Col-0 wild type</span>
+          <span class="chip"><i>sweet2</i></span>
+          <span class="chip"><i>sweet16</i></span>
+          <span class="chip"><i>sweet17</i></span>
+          <span class="chip"><i>sweet16;17</i></span>
+        </div>
+        <div class="col">
+          <h4>Growth condition</h4>
+          <span class="chip co2">Ambient CO&#8322; &middot; ~420 ppm</span>
+          <span class="chip co2">Elevated CO&#8322; &middot; ~800 ppm</span>
+          <h4 style="margin-top:14px">Sampling</h4>
+          <span class="chip">Rosette, day &amp; night</span>
+          <span class="chip">Developmental series</span>
+        </div>
+        <div class="col">
+          <h4>Readouts</h4>
+          <span class="chip">RNA-seq &middot; RT-qPCR</span>
+          <span class="chip">GC&ndash;MS &middot; LC&ndash;MS/MS metabolomics</span>
+          <span class="chip">LI-6800F gas exchange</span>
+          <span class="chip">Stable-isotope physiology &middot; IRMS</span>
+          <span class="chip">Growth &amp; biomass phenotyping</span>
+        </div>
+      </div>
+      <div class="insil">
+        <span class="lb">In silico</span>
+        <span class="st">AlphaFold3 structure</span><span class="ar">&rarr;</span>
+        <span class="st">substrate docking</span><span class="ar">&rarr;</span>
+        <span class="st">GROMACS membrane MD</span><span class="ar">&rarr;</span>
+        <span class="st">transport mechanism</span>
+      </div>
+      <figcaption style="margin-top:10px">Wet lab and dry lab on the same samples: the mutants say <b>whether</b> the buffer matters, the simulations say <b>how</b> the transporter moves the sugar.</figcaption>
+    </div>
+
+    <h3 class="r d5 qh">The three questions</h3>
+    <div class="qa r d5">
+      <div class="q"><div class="n">01</div><p class="t">Do vacuolar SWEET transporters act as the <b>buffer that prevents carbon overflow</b> under elevated CO<sub>2</sub>, and what happens to growth and metabolism when that buffer is removed?</p></div>
+      <div class="q"><div class="n">02</div><p class="t">Where does acclimation <b>saturate</b> &mdash; at what point does more CO<sub>2</sub> stop producing more biomass, and is that point set by transport rather than by photosynthesis?</p></div>
+      <div class="q"><div class="n">03</div><p class="t">What does the transporter do at the <b>molecular level</b> &mdash; which residues gate the sugar, and does the simulated mechanism predict the phenotypes the mutants show?</p></div>
+    </div>
+
+    <h3 class="r d5 hide-m">Why it matters</h3>
+    <p class="r d5 hide-m">Carbon allocation is the step between photosynthesis and yield. Decades of CO<sub>2</sub>-enrichment work show that plants gain less than the extra carbon should allow, and the shortfall is usually blamed on sink limitation in the abstract. Naming the transporters that set that limit, and finding where they saturate, turns a description into a <b>breeding and engineering target</b>.</p>
+
+    <div class="foot r d5">
+      <a class="btn" href="https://mdjonaidhossain.github.io/" target="_blank" rel="noopener">Full research portfolio <span class="arr">&rarr;</span></a>
+      <a class="btn ghost" href="https://doi.org/10.1093/jxb/eraf525" target="_blank" rel="noopener">Read our review in <i>J Exp Bot</i></a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fig=document.getElementById('fig1');
+  var btns=[].slice.call(fig.querySelectorAll('.sw button'));
+  var cap=fig.querySelector('.state');
+  var TEXT={
+    amb:'Ambient CO₂ — sucrose made in the chloroplast mostly leaves for the sink. A little is parked in the vacuole through the <b>SWEET transporters</b>, and released again when the plant needs it.',
+    elev:'Elevated CO₂ — more carbon arrives than the plant can spend. The vacuole fills, the <b>SWEET transporters</b> work harder, and the store buys the plant time to grow into the surplus.',
+    mut:'Elevated CO₂ without the transporters — the vacuole stays empty, the surplus has nowhere to go, and sugar accumulates in the cytosol where it feeds back on photosynthesis.'
+  };
+  var touched=false, order=['amb','elev','mut'], i=0;
+  function set(st){
+    fig.setAttribute('data-state',st);
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-set')===st));});
+    cap.innerHTML=TEXT[st];
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){touched=true;set(b.getAttribute('data-set'));});});
+  set('amb');
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var t=setInterval(function(){
+      if(touched){clearInterval(t);return;}
+      i=(i+1)%order.length; set(order[i]);
+      if(i===order.length-1){ setTimeout(function(){ if(!touched){i=0;set('amb');} },4200); }
+    },3600);
+  }
+})();
+</script>
+</body>
+</html>
